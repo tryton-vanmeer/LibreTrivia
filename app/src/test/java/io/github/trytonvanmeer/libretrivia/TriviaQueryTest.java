@@ -19,12 +19,12 @@ public class TriviaQueryTest {
 
     @Test
     public void triviaQuery_MatchQuery_WithParams() {
-        TriviaQuery query = new TriviaQuery.Builder()
+        TriviaQuery query = new TriviaQuery.Builder(20)
                 .category(TriviaCategory.GENERAL_KNOWLEDGE)
                 .difficulty(TriviaDifficulty.EASY)
                 .type(TriviaType.MULTIPLE)
                 .build();
 
-        assertTrue(query.toString().equals("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple"));
+        assertTrue(query.toString().equals("https://opentdb.com/api.php?amount=20&category=9&difficulty=easy&type=multiple"));
     }
 }
