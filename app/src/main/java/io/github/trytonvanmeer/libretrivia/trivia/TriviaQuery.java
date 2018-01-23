@@ -61,10 +61,10 @@ public class TriviaQuery {
             url.append("&category=").append(this.category.getID());
         }
         if (this.difficulty != null) {
-            url.append("&difficulty=").append(this.difficulty);
+            url.append("&difficulty=").append(this.difficulty.getName());
         }
         if (this.type != null) {
-            url.append("&type=").append(this.type);
+            url.append("&type=").append(this.type.getName());
         }
 
         return url.toString();
