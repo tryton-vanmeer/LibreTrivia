@@ -1,4 +1,4 @@
-package io.github.trytonvanmeer.libretrivia.OpenTrivia;
+package io.github.trytonvanmeer.libretrivia.trivia;
 
 public abstract class TriviaQuestion<T> {
     private TriviaCategory category;

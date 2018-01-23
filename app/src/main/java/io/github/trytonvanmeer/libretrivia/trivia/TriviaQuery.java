@@ -1,4 +1,4 @@
-package io.github.trytonvanmeer.libretrivia.OpenTrivia;
+package io.github.trytonvanmeer.libretrivia.trivia;
 
 public class TriviaQuery {
     private static final String BASE = "https://opentdb.com/api.php?";

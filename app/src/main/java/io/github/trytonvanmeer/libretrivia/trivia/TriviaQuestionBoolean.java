@@ -1,4 +1,4 @@
-package io.github.trytonvanmeer.libretrivia.OpenTrivia;
+package io.github.trytonvanmeer.libretrivia.trivia;
 
 public class TriviaQuestionBoolean extends TriviaQuestion<Boolean> {
 

@@ -1,4 +1,4 @@
-package io.github.trytonvanmeer.libretrivia.OpenTrivia;
+package io.github.trytonvanmeer.libretrivia.trivia;
 
 public class TriviaQuestionMultiple extends TriviaQuestion<String> {
     private String[] incorrectAnswers;

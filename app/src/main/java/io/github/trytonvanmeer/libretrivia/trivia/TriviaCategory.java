@@ -1,4 +1,4 @@
-package io.github.trytonvanmeer.libretrivia.OpenTrivia;
+package io.github.trytonvanmeer.libretrivia.trivia;
 
 import android.content.Context;
 
