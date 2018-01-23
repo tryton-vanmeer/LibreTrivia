@@ -1,6 +1,7 @@
 package io.github.trytonvanmeer.libretrivia;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -11,8 +12,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestion;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionBoolean;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionMultiple;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaType;
 
 public class Util {
 
@@ -48,9 +54,23 @@ public class Util {
         return GET(query.toString());
     }
 
-    public JsonArray getJsonArray(String json) {
-        JsonObject object = new JsonParser().parse(json).getAsJsonObject();
+    public static ArrayList<TriviaQuestion> jsonToQuestionArray(String json) {
+        JsonArray jsonArray = new JsonParser().parse(json).getAsJsonObject()
+                .getAsJsonArray("results");
 
-        return object.getAsJsonArray("results");
+        ArrayList<TriviaQuestion> questions = new ArrayList<>();
+
+        for (JsonElement element : jsonArray) {
+            JsonObject object = element.getAsJsonObject();
+            TriviaType type = TriviaType.get(object.get("type").getAsString());
+
+            if (type == TriviaType.MULTIPLE) {
+                questions.add(TriviaQuestionMultiple.fromJson(object));
+            } else {
+                questions.add(TriviaQuestionBoolean.fromJson(object));
+            }
+        }
+
+        return questions;
     }
 }
