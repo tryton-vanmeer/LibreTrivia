@@ -4,8 +4,8 @@ public class TriviaQuestionMultiple extends TriviaQuestion<String> {
     private String[] incorrectAnswers;
 
     public TriviaQuestionMultiple(TriviaCategory category, TriviaDifficulty difficulty,
-                                  String correctAnswer, String[] incorrectAnswers) {
-        super(category, difficulty, correctAnswer);
+                                  String question, String correctAnswer, String[] incorrectAnswers) {
+        super(category, difficulty, question, correctAnswer);
 
         this.incorrectAnswers = incorrectAnswers;
     }
