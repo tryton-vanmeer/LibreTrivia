@@ -26,4 +26,9 @@
     <string name="category_celebrities">Celebrities</string>
     <string name="category_animals">Animals</string>
     <string name="category_vehicles">Vehicles</string>
+
+    <!-- Difficulty Names -->
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_medium">Medium</string>
+    <string name="difficulty_hard">Hard</string>
 </resources>
