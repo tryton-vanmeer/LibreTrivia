@@ -3,10 +3,10 @@ package io.github.trytonvanmeer.libretrivia;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
-import io.github.trytonvanmeer.libretrivia.OpenTrivia.TriviaCategory;
-import io.github.trytonvanmeer.libretrivia.OpenTrivia.TriviaDifficulty;
-import io.github.trytonvanmeer.libretrivia.OpenTrivia.TriviaQuery;
-import io.github.trytonvanmeer.libretrivia.OpenTrivia.TriviaType;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaCategory;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaDifficulty;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaType;
 
 public class TriviaQueryTest {
 

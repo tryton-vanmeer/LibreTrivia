@@ -1,5 +1,9 @@
 package io.github.trytonvanmeer.libretrivia;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +12,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import io.github.trytonvanmeer.libretrivia.OpenTrivia.TriviaQuery;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
 
 public class Util {
 
@@ -42,5 +46,11 @@ public class Util {
 
     public static String GET(TriviaQuery query) throws IOException {
         return GET(query.toString());
+    }
+
+    public JsonArray getJsonArray(String json) {
+        JsonObject object = new JsonParser().parse(json).getAsJsonObject();
+
+        return object.getAsJsonArray("results");
     }
 }

@@ -5,10 +5,10 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import io.github.trytonvanmeer.libretrivia.OpenTrivia.TriviaCategory;
-import io.github.trytonvanmeer.libretrivia.OpenTrivia.TriviaDifficulty;
-import io.github.trytonvanmeer.libretrivia.OpenTrivia.TriviaQuestion;
-import io.github.trytonvanmeer.libretrivia.OpenTrivia.TriviaQuestionMultiple;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaCategory;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaDifficulty;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestion;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionMultiple;
 
 public class TriviaQuestionTest {
 
