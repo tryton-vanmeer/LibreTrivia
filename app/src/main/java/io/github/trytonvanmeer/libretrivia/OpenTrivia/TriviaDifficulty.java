@@ -19,4 +19,18 @@ public enum TriviaDifficulty {
     public String getDisplayName(Context context) {
         return context.getResources().getString(this.displayName);
     }
+
+    @Override
+    public String toString() {
+        switch (this) {
+            case EASY:
+                return "easy";
+            case MEDIUM:
+                return "medium";
+            case HARD:
+                return "hard";
+            default:
+                return "";
+        }
+    }
 }

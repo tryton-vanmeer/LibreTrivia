@@ -18,4 +18,16 @@ public enum TriviaType {
     public String getDisplayName(Context context) {
         return context.getResources().getString(this.displayName);
     }
+
+    @Override
+    public String toString() {
+        switch (this) {
+            case MULTIPLE:
+                return "multiple";
+            case BOOLEAN:
+                return "boolean";
+            default:
+                return "";
+        }
+    }
 }
