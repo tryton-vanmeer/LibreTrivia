@@ -2,35 +2,43 @@ package io.github.trytonvanmeer.libretrivia.trivia;
 
 import android.content.Context;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import io.github.trytonvanmeer.libretrivia.R;
 
 public enum TriviaDifficulty {
-    EASY(R.string.difficulty_easy),
-    MEDIUM(R.string.difficulty_medium),
-    HARD(R.string.difficulty_hard);
+    EASY("easy", R.string.difficulty_easy),
+    MEDIUM("medium", R.string.difficulty_medium),
+    HARD("hard", R.string.difficulty_hard);
 
-    // The display name of the difficulty
-    private int displayName;
+    // Name of difficulty used in queries
+    private final String name;
+    // Display name of the difficulty
+    private final int displayName;
 
-    TriviaDifficulty(int displayName) {
+    private static final Map<String, TriviaDifficulty> lookup = new HashMap<>();
+
+    static {
+        for (TriviaDifficulty difficulty : TriviaDifficulty.values()) {
+            lookup.put(difficulty.getName(), difficulty);
+        }
+    }
+
+    TriviaDifficulty(String name, int displayName) {
+        this.name = name;
         this.displayName = displayName;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public String getDisplayName(Context context) {
         return context.getResources().getString(this.displayName);
     }
 
-    @Override
-    public String toString() {
-        switch (this) {
-            case EASY:
-                return "easy";
-            case MEDIUM:
-                return "medium";
-            case HARD:
-                return "hard";
-            default:
-                return "";
-        }
+    public static TriviaDifficulty get(String name) {
+        return lookup.get(name);
     }
 }

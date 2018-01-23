@@ -2,6 +2,9 @@ package io.github.trytonvanmeer.libretrivia.trivia;
 
 import android.content.Context;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import io.github.trytonvanmeer.libretrivia.R;
 
 /*
@@ -39,6 +42,14 @@ public enum TriviaCategory {
     // The display name of the category
     private final int displayName;
 
+    private static final Map<Integer, TriviaCategory> lookup = new HashMap<>();
+
+    static {
+        for (TriviaCategory category : TriviaCategory.values()) {
+            lookup.put(category.getID(), category);
+        }
+    }
+
     TriviaCategory(int ID, int name) {
         this.ID = ID;
         this.displayName = name;
@@ -50,5 +61,9 @@ public enum TriviaCategory {
 
     public String getDisplayName(Context context) {
         return context.getResources().getString(this.displayName);
+    }
+
+    public static TriviaCategory get(int id) {
+        return lookup.get(id);
     }
 }
