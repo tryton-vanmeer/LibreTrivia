@@ -27,7 +27,11 @@ public class TriviaQuery {
         }
 
         public Builder(int amount) {
-            this.amount = amount;
+            if (amount > 50) {
+                this.amount = 50;
+            } else {
+                this.amount = amount;
+            }
         }
 
         public Builder category(TriviaCategory category) {

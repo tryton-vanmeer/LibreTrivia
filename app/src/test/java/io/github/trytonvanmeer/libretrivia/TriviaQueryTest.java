@@ -27,4 +27,11 @@ public class TriviaQueryTest {
 
         assertTrue(query.toString().equals("https://opentdb.com/api.php?amount=20&category=9&difficulty=easy&type=multiple"));
     }
+
+    @Test
+    public void triviaQuery_AmountExceedFifty() {
+        TriviaQuery query = new TriviaQuery.Builder(500).build();
+
+        assertTrue(query.toString().equals("https://opentdb.com/api.php?amount=50"));
+    }
 }
