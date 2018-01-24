@@ -15,6 +15,11 @@ buildscript {
     }
 }
 
+ext {
+    supportLibVersion = "27.0.2"
+    butterknifeVersion = "8.8.1"
+}
+
 allprojects {
     repositories {
         google()
