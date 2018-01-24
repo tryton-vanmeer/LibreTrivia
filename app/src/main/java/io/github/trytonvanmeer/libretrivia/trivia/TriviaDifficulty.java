@@ -3,6 +3,7 @@ package io.github.trytonvanmeer.libretrivia.trivia;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.github.trytonvanmeer.libretrivia.LibreTriviaApplication;
 import io.github.trytonvanmeer.libretrivia.R;
 
 public enum TriviaDifficulty {
@@ -40,5 +41,10 @@ public enum TriviaDifficulty {
 
     public static TriviaDifficulty get(String name) {
         return lookup.get(name);
+    }
+
+    @Override
+    public String toString() {
+        return LibreTriviaApplication.getAppContext().getResources().getString(this.displayName);
     }
 }
