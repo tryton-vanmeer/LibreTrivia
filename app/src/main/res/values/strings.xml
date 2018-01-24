@@ -35,4 +35,8 @@
     <!-- Question Type Names -->
     <string name="question_type_multiple">Multiple Choice</string>
     <string name="question_type_boolean">True / False</string>
+
+    <!-- UI -->
+    <string name="ui_settings">Settings</string>
+    <string name="ui_about">About</string>
 </resources>
