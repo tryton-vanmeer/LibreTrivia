@@ -90,8 +90,8 @@ public enum TriviaCategory {
         return this.name;
     }
 
-    public String getDisplayName(Context context) {
-        return context.getResources().getString(this.displayName);
+    public int getDisplayName() {
+        return this.displayName;
     }
 
     public static TriviaCategory get(String name) {
