@@ -1,13 +1,13 @@
 package io.github.trytonvanmeer.libretrivia.trivia;
 
-import android.content.Context;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import io.github.trytonvanmeer.libretrivia.R;
 
 public enum TriviaType {
+    ANY("any", R.string.ui_any),
+
     MULTIPLE("multiple", R.string.question_type_multiple),
     BOOLEAN("boolean", R.string.question_type_boolean);
 
@@ -33,8 +33,8 @@ public enum TriviaType {
         return this.name;
     }
 
-    public String getDisplayName(Context context) {
-        return context.getResources().getString(this.displayName);
+    public int getDisplayName() {
+        return this.displayName;
     }
 
     public static TriviaType get(String name) {

@@ -1,13 +1,13 @@
 package io.github.trytonvanmeer.libretrivia.trivia;
 
-import android.content.Context;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import io.github.trytonvanmeer.libretrivia.R;
 
 public enum TriviaDifficulty {
+    ANY("any", R.string.ui_any),
+
     EASY("easy", R.string.difficulty_easy),
     MEDIUM("medium", R.string.difficulty_medium),
     HARD("hard", R.string.difficulty_hard);
@@ -34,8 +34,8 @@ public enum TriviaDifficulty {
         return this.name;
     }
 
-    public String getDisplayName(Context context) {
-        return context.getResources().getString(this.displayName);
+    public int getDisplayName() {
+        return this.displayName;
     }
 
     public static TriviaDifficulty get(String name) {

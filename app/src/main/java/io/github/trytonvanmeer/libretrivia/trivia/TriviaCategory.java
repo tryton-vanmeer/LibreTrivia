@@ -1,7 +1,5 @@
 package io.github.trytonvanmeer.libretrivia.trivia;
 
-import android.content.Context;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +9,8 @@ import io.github.trytonvanmeer.libretrivia.R;
     Categories that a Trivia Question can fall into
  */
 public enum TriviaCategory {
+    ANY(-1, "Any", R.string.ui_any),
+
     GENERAL_KNOWLEDGE(9, "General Knowledge",
             R.string.category_general_knowledge),
     ENTERTAINMENT_BOOKS(10, "Entertainment: Books",
