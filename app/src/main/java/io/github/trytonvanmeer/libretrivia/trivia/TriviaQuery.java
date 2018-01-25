@@ -1,6 +1,8 @@
 package io.github.trytonvanmeer.libretrivia.trivia;
 
-public class TriviaQuery {
+import java.io.Serializable;
+
+public class TriviaQuery implements Serializable {
     private static final String BASE = "https://opentdb.com/api.php?";
     private static final int DEFAULT_AMOUNT = 10;
 
