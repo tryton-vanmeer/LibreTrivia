@@ -3,12 +3,15 @@ package io.github.trytonvanmeer.libretrivia.activities;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 
 import java.io.IOException;
 
@@ -30,6 +33,7 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
     @BindView(R.id.text_question_category) TextView textViewQuestionCategory;
     @BindView(R.id.progress_questions) DonutProgress progressBar;
     @BindView(R.id.frame_trivia_game) FrameLayout frameLayout;
+    @BindView(R.id.button_next_question) Button buttonNextQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
