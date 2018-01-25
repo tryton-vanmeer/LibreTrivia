@@ -5,6 +5,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.mikepenz.aboutlibraries.Libs;
+import com.mikepenz.aboutlibraries.LibsBuilder;
+
 import io.github.trytonvanmeer.libretrivia.R;
 
 public class BaseActivity extends AppCompatActivity {
@@ -22,9 +25,23 @@ public class BaseActivity extends AppCompatActivity {
             case R.id.settings:
                 return true;
             case R.id.about:
+                onAbout();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    protected void onAbout() {
+        String appName = getResources().getString(R.string.app_name);
+        String appDescription = getResources().getString(R.string.app_description);
+
+        new LibsBuilder()
+                .withActivityStyle(Libs.ActivityStyle.LIGHT_DARK_TOOLBAR)
+                .withAboutIconShown(true)
+                .withAboutAppName(appName)
+                .withAboutVersionShownName(true)
+                .withAboutDescription(appDescription)
+                .start(this);
     }
 }
