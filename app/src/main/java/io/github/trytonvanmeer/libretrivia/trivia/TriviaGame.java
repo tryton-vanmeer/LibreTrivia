@@ -16,7 +16,7 @@ public class TriviaGame {
     }
 
     public TriviaQuestion getCurrentQuestion() {
-        return this.questions.get(currentQuestion);
+        return this.questions.get(currentQuestion - 1);
     }
 
     public int getCurrentQuestionCount() {
