@@ -61,13 +61,13 @@ public class TriviaQuery {
         url.append(BASE);
         url.append("amount=").append(this.amount);
 
-        if (this.category != null) {
+        if (this.category != null & this.category != TriviaCategory.ANY) {
             url.append("&category=").append(this.category.getID());
         }
-        if (this.difficulty != null) {
+        if (this.difficulty != null & this.difficulty != TriviaDifficulty.ANY) {
             url.append("&difficulty=").append(this.difficulty.getName());
         }
-        if (this.type != null) {
+        if (this.type != null & this.type != TriviaType.ANY) {
             url.append("&type=").append(this.type.getName());
         }
 
