@@ -9,15 +9,11 @@ import android.widget.Spinner;
 
 import com.shawnlin.numberpicker.NumberPicker;
 
-import java.io.IOException;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.trytonvanmeer.libretrivia.R;
-import io.github.trytonvanmeer.libretrivia.exceptions.NoTriviaResultsException;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaCategory;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaDifficulty;
-import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
 
 public class MainActivity extends BaseActivity {
