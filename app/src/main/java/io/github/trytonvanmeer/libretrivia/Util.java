@@ -14,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+import io.github.trytonvanmeer.libretrivia.exceptions.NoTriviaResultsException;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestion;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionBoolean;
@@ -54,9 +55,14 @@ public class Util {
         return GET(query.toString());
     }
 
-    public static ArrayList<TriviaQuestion> jsonToQuestionArray(String json) {
-        JsonArray jsonArray = new JsonParser().parse(json).getAsJsonObject()
-                .getAsJsonArray("results");
+    public static ArrayList<TriviaQuestion> jsonToQuestionArray(String json) throws NoTriviaResultsException {
+        JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
+
+        if (jsonObject.get("response_code").getAsInt() == 1) {
+            throw new NoTriviaResultsException();
+        }
+
+        JsonArray jsonArray = jsonObject.getAsJsonArray("results");
 
         ArrayList<TriviaQuestion> questions = new ArrayList<>();
 

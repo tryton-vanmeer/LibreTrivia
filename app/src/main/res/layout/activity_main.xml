@@ -22,6 +22,7 @@
             android:id="@+id/button_play"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:background="@color/colorAccent"
             android:textColor="@color/colorText"
             android:text="@string/ui_play"
@@ -39,6 +40,7 @@
             android:id="@+id/number_picker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:layout_gravity="center"
             app:np_orientation="horizontal"
             app:np_dividerColor="@color/colorPrimary"
@@ -59,7 +61,8 @@
         <Spinner
             android:id="@+id/spinner_category"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
 
         <!-- Select Difficulty Spinner -->
         <TextView
@@ -71,7 +74,8 @@
         <Spinner
             android:id="@+id/spinner_difficulty"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
 
     </LinearLayout>
 
