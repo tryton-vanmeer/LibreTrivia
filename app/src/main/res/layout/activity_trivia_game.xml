@@ -39,6 +39,7 @@
 
     <Button
         android:id="@+id/button_next_question"
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

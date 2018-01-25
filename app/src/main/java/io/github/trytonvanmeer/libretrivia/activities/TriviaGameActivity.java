@@ -50,21 +50,25 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
         task.execute(query);
     }
 
-    public void onTriviaQuestionsDownloaded(String json) {
+    public boolean onTriviaQuestionsDownloaded(String json) {
         if (json == null) {
             onNetworkError();
+            return false;
         } else {
             try {
                 this.game = new TriviaGame(Util.jsonToQuestionArray(json));
             } catch (NoTriviaResultsException e) {
                 onNoTriviaResults();
+                return false;
             }
 
             // Setup game layout
             progressBar.setMax(game.getQuestionsCount());
             triviaStatusBar.setVisibility(View.VISIBLE);
+            buttonNextQuestion.setVisibility(View.VISIBLE);
             updateStatusBar();
         }
+        return true;
     }
 
     private void updateStatusBar() {
