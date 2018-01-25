@@ -1,5 +1,7 @@
 package io.github.trytonvanmeer.libretrivia.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -52,7 +54,26 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frame_trivia_game);
+
+        if (fragment instanceof TriviaGameErrorFragment)  {
+            super.onBackPressed();
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.ui_quit_game)
+                    .setMessage(R.string.ui_quit_game_msg)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            TriviaGameActivity.super.onBackPressed();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {}
+                    })
+                    .show();
+        }
     }
 
     public boolean onTriviaQuestionsDownloaded(String json) {
