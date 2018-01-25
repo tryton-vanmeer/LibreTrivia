@@ -46,4 +46,8 @@
     <string name="ui_category">Category</string>
     <string name="ui_difficulty">Difficulty</string>
     <string name="ui_next">Next</string>
+
+    <!-- Error Strings -->
+    <string name="error_network"><b>Network Error!</b>\n Could not connect to a network.</string>
+    <string name="error_no_trivia_results"><b>No Trivia Results!</b>\n Was not able to find trivia questions that satisfied all options.</string>
 </resources>

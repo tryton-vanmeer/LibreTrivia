@@ -2,16 +2,15 @@ package io.github.trytonvanmeer.libretrivia.activities;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
-import com.mikepenz.iconics.IconicsDrawable;
-import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
 
 import java.io.IOException;
 
@@ -20,6 +19,7 @@ import butterknife.ButterKnife;
 import io.github.trytonvanmeer.libretrivia.R;
 import io.github.trytonvanmeer.libretrivia.Util;
 import io.github.trytonvanmeer.libretrivia.exceptions.NoTriviaResultsException;
+import io.github.trytonvanmeer.libretrivia.fragments.TriviaGameErrorFragment;
 import io.github.trytonvanmeer.libretrivia.interfaces.IDownloadTriviaQuestionReceiver;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
@@ -50,6 +50,11 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
         task.execute(query);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     public boolean onTriviaQuestionsDownloaded(String json) {
         if (json == null) {
             onNetworkError();
@@ -61,13 +66,13 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
                 onNoTriviaResults();
                 return false;
             }
-
-            // Setup game layout
-            progressBar.setMax(game.getQuestionsCount());
-            triviaStatusBar.setVisibility(View.VISIBLE);
-            buttonNextQuestion.setVisibility(View.VISIBLE);
-            updateStatusBar();
         }
+
+        // Setup game layout
+        progressBar.setMax(game.getQuestionsCount());
+        triviaStatusBar.setVisibility(View.VISIBLE);
+        buttonNextQuestion.setVisibility(View.VISIBLE);
+        updateStatusBar();
         return true;
     }
 
@@ -80,11 +85,23 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
     }
     
     private void onNetworkError() {
-        Toast.makeText(this, "Network Error!", Toast.LENGTH_SHORT).show();
+        String msg = getResources().getString(R.string.error_network);
+        Fragment errorFragment = TriviaGameErrorFragment.newInstance(msg);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frame_trivia_game, errorFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
     }
 
     private void onNoTriviaResults() {
-        Toast.makeText(this, "No Results!", Toast.LENGTH_SHORT).show();
+        String msg = getResources().getString(R.string.error_no_trivia_results);
+        Fragment errorFragment = TriviaGameErrorFragment.newInstance(msg);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frame_trivia_game, errorFragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
     }
 
     private static class DownloadTriviaQuestionsTask extends AsyncTask<TriviaQuery, Integer, String> {

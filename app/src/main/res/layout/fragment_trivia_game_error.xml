@@ -1,0 +1,34 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="io.github.trytonvanmeer.libretrivia.fragments.TriviaGameErrorFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:scaleType="fitXY"
+            android:tint="@color/colorTextSecondary"
+            android:src="@drawable/ic_emoticon_sad" />
+
+        <TextView
+            android:id="@+id/text_error_msg"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/error_no_trivia_results"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
