@@ -8,18 +8,71 @@
     android:layout_height="match_parent"
     tools:context="io.github.trytonvanmeer.libretrivia.activities.MainActivity">
 
-    <Button
-        android:id="@+id/button_play"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorText"
-        android:text="@string/ui_play"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+        android:layout_marginEnd="8dp">
+
+        <!-- Play Button -->
+        <Button
+            android:id="@+id/button_play"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:textColor="@color/colorText"
+            android:text="@string/ui_play"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+        
+        <!-- Select Amount -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/number_picker"
+            android:textSize="18sp"
+            android:text="@string/ui_amount" />
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/number_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:np_orientation="horizontal"
+            app:np_dividerColor="@color/colorPrimary"
+            app:np_formatter="%02d"
+            app:np_value="10"
+            app:np_max="50"
+            app:np_min="1"
+            app:np_selectedTextColor="@color/colorPrimary"
+            app:np_textColor="@color/colorPrimary" />
+
+        <!-- Select Category Spinner -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/spinner_category"
+            android:textSize="18sp"
+            android:text="@string/ui_category" />
+        <Spinner
+            android:id="@+id/spinner_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Select Difficulty Spinner -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/spinner_difficulty"
+            android:textSize="18sp"
+            android:text="@string/ui_difficulty" />
+        <Spinner
+            android:id="@+id/spinner_difficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
