@@ -90,8 +90,11 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
         }
 
         // Setup game layout
+        // TODO: Show first question
+
         progressBar.setMax(game.getQuestionsCount());
         triviaStatusBar.setVisibility(View.VISIBLE);
+        buttonNextQuestion.setOnClickListener(new NextButtonListener());
         buttonNextQuestion.setVisibility(View.VISIBLE);
         updateStatusBar();
         return true;
@@ -123,6 +126,13 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
         ft.replace(R.id.frame_trivia_game, errorFragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
+    }
+
+    private class NextButtonListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            // TODO: Implement Next Button
+        }
     }
 
     private static class DownloadTriviaQuestionsTask extends AsyncTask<TriviaQuery, Integer, String> {
