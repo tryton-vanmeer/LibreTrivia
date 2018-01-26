@@ -22,6 +22,7 @@ import io.github.trytonvanmeer.libretrivia.R;
 import io.github.trytonvanmeer.libretrivia.Util;
 import io.github.trytonvanmeer.libretrivia.exceptions.NoTriviaResultsException;
 import io.github.trytonvanmeer.libretrivia.fragments.TriviaGameErrorFragment;
+import io.github.trytonvanmeer.libretrivia.fragments.TriviaQuestionFragment;
 import io.github.trytonvanmeer.libretrivia.interfaces.IDownloadTriviaQuestionReceiver;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
@@ -35,7 +36,6 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
     @BindView(R.id.text_question_category) TextView textViewQuestionCategory;
     @BindView(R.id.text_question_difficulty) TextView textViewQuestionDifficulty;
     @BindView(R.id.progress_questions) DonutProgress progressBar;
-    @BindView(R.id.frame_trivia_game) FrameLayout frameLayout;
     @BindView(R.id.button_next_question) Button buttonNextQuestion;
 
     @Override
@@ -91,7 +91,12 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
         }
 
         // Setup game layout
-        // TODO: Show first question
+        Fragment fragment = TriviaQuestionFragment.newInstance(game.getCurrentQuestion());
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frame_trivia_game, fragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
 
         progressBar.setMax(game.getQuestionsCount());
         triviaStatusBar.setVisibility(View.VISIBLE);

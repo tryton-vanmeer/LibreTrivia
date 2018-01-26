@@ -42,6 +42,8 @@
     <string name="ui_about">About</string>
     <string name="ui_play">Play</string>
     <string name="ui_any">Any</string>
+    <string name="ui_true">True</string>
+    <string name="ui_false">False</string>
     <string name="ui_amount">Amount</string>
     <string name="ui_category">Category</string>
     <string name="ui_difficulty">Difficulty</string>
