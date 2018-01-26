@@ -1,0 +1,16 @@
+language: android
+android:
+  components:
+    # The BuildTools version used by LibreTrivia
+    - tools
+    - build-tools-27.0.2
+
+    # The SDK version used to compile LibreTrivia
+    - android-27
+
+before_install: 
+  - yes | sdkmanager "platforms;android-27"
+script: ./gradlew -Dorg.gradle.jvmargs=-Xmx1536m assembleDebug lintDebug
+
+licenses:
+- '.+'
