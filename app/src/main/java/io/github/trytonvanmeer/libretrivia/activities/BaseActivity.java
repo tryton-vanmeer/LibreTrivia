@@ -27,6 +27,8 @@ public class BaseActivity extends AppCompatActivity {
             case R.id.about:
                 onAbout();
                 return true;
+            case  android.R.id.home:
+                onBackPressed();
             default:
                 return super.onOptionsItemSelected(item);
         }
