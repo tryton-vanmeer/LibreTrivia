@@ -33,6 +33,7 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
 
     @BindView(R.id.trivia_status_bar) LinearLayout triviaStatusBar;
     @BindView(R.id.text_question_category) TextView textViewQuestionCategory;
+    @BindView(R.id.text_question_difficulty) TextView textViewQuestionDifficulty;
     @BindView(R.id.progress_questions) DonutProgress progressBar;
     @BindView(R.id.frame_trivia_game) FrameLayout frameLayout;
     @BindView(R.id.button_next_question) Button buttonNextQuestion;
@@ -103,9 +104,10 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
     private void updateStatusBar() {
         progressBar.setProgress(game.getCurrentQuestionCount());
         progressBar.setText(Integer.toString(game.getCurrentQuestionCount()));
-
         textViewQuestionCategory.setText(
                 game.getCurrentQuestion().getCategory().toString());
+        textViewQuestionDifficulty.setText(
+                game.getCurrentQuestion().getDifficulty().toString());
     }
     
     private void onNetworkError() {

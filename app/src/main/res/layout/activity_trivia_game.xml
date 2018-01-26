@@ -12,14 +12,27 @@
         android:layout_height="wrap_content"
         android:visibility="invisible">
 
-        <TextView
-            android:id="@+id/text_question_category"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="8dp"
-            android:textSize="18sp" />
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/text_question_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_question_difficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp" />
+
+        </LinearLayout>
 
         <com.github.lzyzsd.circleprogress.DonutProgress
             android:id="@+id/progress_questions"
