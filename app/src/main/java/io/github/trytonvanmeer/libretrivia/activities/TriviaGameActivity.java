@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
 
@@ -24,6 +24,7 @@ import io.github.trytonvanmeer.libretrivia.Util;
 import io.github.trytonvanmeer.libretrivia.exceptions.NoTriviaResultsException;
 import io.github.trytonvanmeer.libretrivia.fragments.TriviaGameErrorFragment;
 import io.github.trytonvanmeer.libretrivia.fragments.TriviaQuestionFragment;
+import io.github.trytonvanmeer.libretrivia.fragments.TriviaQuestionResultFragment;
 import io.github.trytonvanmeer.libretrivia.interfaces.IDownloadTriviaQuestionReceiver;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
@@ -112,10 +113,10 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
 
     public void updateTriviaQuestion() {
         Fragment fragment = TriviaQuestionFragment.newInstance(game.getCurrentQuestion());
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frame_trivia_game, fragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        ft.commit();
+        getSupportFragmentManager().beginTransaction()
+        .replace(R.id.frame_trivia_game, fragment)
+        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        .commit();
     }
     
     private void onNetworkError() {
@@ -142,25 +143,32 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
         @Override
         public void onClick(View v) {
             FragmentManager manager = getSupportFragmentManager();
-            TriviaQuestionFragment fragment =
+            TriviaQuestionFragment questionFragment =
                     (TriviaQuestionFragment) manager.findFragmentById(R.id.frame_trivia_game);
 
-            String selectedAnswer = fragment.getSelectedAnswer();
+            String selectedAnswer = questionFragment.getSelectedAnswer();
             boolean guess = game.nextQuestion(selectedAnswer);
 
-            int msg = guess ? R.string.ui_correct : R.string.ui_wrong;
-            Toast.makeText(TriviaGameActivity.this, msg, Toast.LENGTH_SHORT).show();
+            Fragment resultFragment = TriviaQuestionResultFragment.newInstance(guess);
 
             manager.beginTransaction()
-                    .remove(fragment)
+                    .replace(R.id.frame_trivia_game, resultFragment)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .commit();
 
             if (game.isDone()) {
                 // TODO: Display results screen if reached end of questions
                 finish();
             } else {
-                updateStatusBar();
-                updateTriviaQuestion();
+                buttonNextQuestion.setEnabled(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateStatusBar();
+                        updateTriviaQuestion();
+                        buttonNextQuestion.setEnabled(true);
+                    }
+                }, 1000);
             }
         }
     }

@@ -6,4 +6,7 @@
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#757575</color>
     <color name="colorText">#FFFFFF</color>
+
+    <color name="colorAccentRed">#D50000</color>
+    <color name="colorAccentGreen">#00C853</color>
 </resources>
