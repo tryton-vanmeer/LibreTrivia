@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- com.shawnlin:number-picker -->
+    <string name="define_NumberPicker" />
+    <string name="library_NumberPicker_author">Shawn Lin</string>
+    <string name="library_NumberPicker_libraryName">Number Picker</string>
+    <string name="library_NumberPicker_libraryDescription">The android library that provides a simple and customizable NumberPicker. It\'s based on android.widget.NumberPicker.</string>
+    <string name="library_NumberPicker_libraryWebsite">https://github.com/ShawnLin013/NumberPicker</string>
+
+    <!-- com.github.lzyzsd:circleprogress -->
+    <string name="define_CircleProgress" />
+    <string name="library_CircleProgress_author">lzyzsd</string>
+    <string name="library_CircleProgress_libraryName">CircleProgress</string>
+    <string name="library_CircleProgress_libraryDescription">Inspired from github.com/daimajia/NumberProgressBar and CleanMaster</string>
+    <string name="library_CircleProgress_libraryWebsite">https://github.com/lzyzsd/CircleProgress</string>
+</resources>
