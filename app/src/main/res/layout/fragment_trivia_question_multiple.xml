@@ -28,7 +28,8 @@
             android:id="@+id/radio_group_answers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp">
+            android:layout_marginStart="16dp"
+            android:checkedButton="@id/radio_button_answer_one">
 
             <RadioButton
                 android:id="@+id/radio_button_answer_one"
