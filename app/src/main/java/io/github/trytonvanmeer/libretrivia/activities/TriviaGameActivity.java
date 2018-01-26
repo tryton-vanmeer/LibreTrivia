@@ -5,10 +5,10 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -93,18 +93,12 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
         }
 
         // Setup game layout
-        Fragment fragment = TriviaQuestionFragment.newInstance(game.getCurrentQuestion());
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frame_trivia_game, fragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        ft.commit();
-
         progressBar.setMax(game.getQuestionsCount());
         triviaStatusBar.setVisibility(View.VISIBLE);
         buttonNextQuestion.setOnClickListener(new NextButtonListener());
         buttonNextQuestion.setVisibility(View.VISIBLE);
         updateStatusBar();
+        updateTriviaQuestion();
         return true;
     }
 
@@ -115,6 +109,14 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
                 game.getCurrentQuestion().getCategory().toString());
         textViewQuestionDifficulty.setText(
                 game.getCurrentQuestion().getDifficulty().toString());
+    }
+
+    public void updateTriviaQuestion() {
+        Fragment fragment = TriviaQuestionFragment.newInstance(game.getCurrentQuestion());
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frame_trivia_game, fragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
     }
     
     private void onNetworkError() {
@@ -140,12 +142,16 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
     private class NextButtonListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            TriviaQuestionFragment fragment = (TriviaQuestionFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.frame_trivia_game);
+            FragmentManager manager = getSupportFragmentManager();
+            TriviaQuestionFragment fragment =
+                    (TriviaQuestionFragment) manager.findFragmentById(R.id.frame_trivia_game);
 
             String selectedAnswer = fragment.getSelectedAnswer();
 
             Toast.makeText(TriviaGameActivity.this, selectedAnswer, Toast.LENGTH_SHORT).show();
+            manager.beginTransaction()
+                    .remove(fragment)
+                    .commit();
         }
     }
 
