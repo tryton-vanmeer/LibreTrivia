@@ -155,8 +155,14 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
             manager.beginTransaction()
                     .remove(fragment)
                     .commit();
-            updateStatusBar();
-            updateTriviaQuestion();
+
+            if (game.isDone()) {
+                // TODO: Display results screen if reached end of questions
+                finish();
+            } else {
+                updateStatusBar();
+                updateTriviaQuestion();
+            }
         }
     }
 

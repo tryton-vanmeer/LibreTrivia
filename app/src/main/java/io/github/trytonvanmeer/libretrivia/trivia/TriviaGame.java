@@ -10,17 +10,17 @@ public class TriviaGame {
     private List<TriviaQuestion> questions;
 
     public TriviaGame(List<TriviaQuestion> questions) {
-        this.currentQuestion = 1;
+        this.currentQuestion = 0;
         this.questions = questions;
         this.questionsAnsweredStatus = new boolean[questions.size()];
     }
 
     public TriviaQuestion getCurrentQuestion() {
-        return this.questions.get(currentQuestion - 1);
+        return this.questions.get(currentQuestion);
     }
 
     public int getCurrentQuestionCount() {
-        return this.currentQuestion;
+        return this.currentQuestion + 1;
     }
 
     public int getQuestionsCount() {
@@ -35,5 +35,9 @@ public class TriviaGame {
         currentQuestion++;
 
         return answer;
+    }
+
+    public boolean isDone() {
+        return (this.currentQuestion == questions.size());
     }
 }
