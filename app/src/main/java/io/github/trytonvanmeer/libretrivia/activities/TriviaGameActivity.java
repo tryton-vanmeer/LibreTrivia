@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
 
@@ -26,6 +27,7 @@ import io.github.trytonvanmeer.libretrivia.fragments.TriviaQuestionFragment;
 import io.github.trytonvanmeer.libretrivia.interfaces.IDownloadTriviaQuestionReceiver;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestion;
 
 public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQuestionReceiver {
     protected static final String EXTRA_TRIVIA_QUERY = "extra_trivia_query";
@@ -138,7 +140,12 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
     private class NextButtonListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            // TODO: Implement Next Button
+            TriviaQuestionFragment fragment = (TriviaQuestionFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.frame_trivia_game);
+
+            String selectedAnswer = fragment.getSelectedAnswer();
+
+            Toast.makeText(TriviaGameActivity.this, selectedAnswer, Toast.LENGTH_SHORT).show();
         }
     }
 
