@@ -6,13 +6,13 @@ public class TriviaGame {
     private static final String TAG = "TriviaGame";
 
     private int currentQuestion;
-    private boolean[] questionsAnsweredStatus;
+    private boolean[] results;
     private List<TriviaQuestion> questions;
 
     public TriviaGame(List<TriviaQuestion> questions) {
         this.currentQuestion = 0;
         this.questions = questions;
-        this.questionsAnsweredStatus = new boolean[questions.size()];
+        this.results = new boolean[questions.size()];
     }
 
     public TriviaQuestion getCurrentQuestion() {
@@ -27,11 +27,15 @@ public class TriviaGame {
         return this.questions.size();
     }
 
+    public boolean[] getResults() {
+        return this.results;
+    }
+
     public boolean nextQuestion(String guess) {
         TriviaQuestion question = getCurrentQuestion();
         boolean answer = question.checkAnswer(guess);
 
-        questionsAnsweredStatus[currentQuestion] = answer;
+        results[currentQuestion] = answer;
         currentQuestion++;
 
         return answer;
