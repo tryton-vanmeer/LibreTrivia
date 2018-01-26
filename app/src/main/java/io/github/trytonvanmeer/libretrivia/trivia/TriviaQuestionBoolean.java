@@ -4,11 +4,23 @@ import android.text.Html;
 
 import com.google.gson.JsonObject;
 
-public class TriviaQuestionBoolean extends TriviaQuestion<Boolean> {
+public class TriviaQuestionBoolean extends TriviaQuestion {
+
+    private Boolean correctAnswer;
 
     public TriviaQuestionBoolean(TriviaCategory category, TriviaDifficulty difficulty,
                           String question, boolean correctAnswer) {
-        super(category, difficulty, question, correctAnswer);
+        super(category, difficulty, question);
+        this.correctAnswer = correctAnswer;
+    }
+
+    @Override
+    public boolean checkAnswer(String guess) {
+        return this.correctAnswer.equals(Boolean.valueOf(guess));
+    }
+
+    public boolean checkAnswer(Boolean guess) {
+        return checkAnswer(guess.toString());
     }
 
     public static TriviaQuestionBoolean fromJson(JsonObject json) {

@@ -1,18 +1,16 @@
 package io.github.trytonvanmeer.libretrivia.trivia;
 
-public abstract class TriviaQuestion<T> {
+public abstract class TriviaQuestion {
     private TriviaCategory category;
     private TriviaDifficulty difficulty;
 
     protected String question;
-    protected T correctAnswer;
 
-    protected TriviaQuestion(TriviaCategory category, TriviaDifficulty difficulty, String question, T correctAnswer) {
+    protected TriviaQuestion(TriviaCategory category, TriviaDifficulty difficulty, String question) {
         this.category = category;
         this.difficulty = difficulty;
 
         this.question = question;
-        this.correctAnswer = correctAnswer;
     }
 
     public TriviaCategory getCategory() {
@@ -27,7 +25,5 @@ public abstract class TriviaQuestion<T> {
         return this.question;
     }
 
-    public boolean checkAnswer(T guess) {
-        return this.correctAnswer.equals(guess);
-    }
+    public abstract boolean checkAnswer(String guess);
 }

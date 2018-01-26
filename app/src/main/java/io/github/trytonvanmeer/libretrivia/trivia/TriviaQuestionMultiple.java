@@ -5,13 +5,15 @@ import android.text.Html;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-public class TriviaQuestionMultiple extends TriviaQuestion<String> {
+public class TriviaQuestionMultiple extends TriviaQuestion {
+    private String correctAnswer;
     private String[] incorrectAnswers;
 
     public TriviaQuestionMultiple(TriviaCategory category, TriviaDifficulty difficulty,
                                   String question, String correctAnswer, String[] incorrectAnswers) {
-        super(category, difficulty, question, correctAnswer);
+        super(category, difficulty, question);
 
+        this.correctAnswer = correctAnswer;
         this.incorrectAnswers = incorrectAnswers;
     }
 
@@ -20,6 +22,11 @@ public class TriviaQuestionMultiple extends TriviaQuestion<String> {
                 incorrectAnswers[0],
                 incorrectAnswers[1],
                 incorrectAnswers[2]};
+    }
+
+    @Override
+    public boolean checkAnswer(String guess) {
+        return this.correctAnswer.equals(guess);
     }
 
     public static TriviaQuestionMultiple fromJson(JsonObject json) {
