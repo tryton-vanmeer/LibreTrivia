@@ -52,6 +52,7 @@
     <string name="ui_next">Next</string>
     <string name="ui_quit_game">Quit Game</string>
     <string name="ui_quit_game_msg">Are you sure you want to quit this game?</string>
+    <string name="ui_results">Results</string>
 
     <!-- Error Strings -->
     <string name="error_network"><b>Network Error!</b>\n Could not connect to a network.</string>

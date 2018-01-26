@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public class TriviaGame implements Serializable {
-    private static final String TAG = "TriviaGame";
-
     private int currentQuestion;
     private boolean[] results;
     private List<TriviaQuestion> questions;
