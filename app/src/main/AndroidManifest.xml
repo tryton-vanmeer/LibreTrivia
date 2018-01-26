@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.TriviaGameActivity" />
-        <activity android:name=".activities.TriviaGameResultsActivity"></activity>
+        <activity android:name=".activities.TriviaGameResultsActivity" />
     </application>
 
 </manifest>

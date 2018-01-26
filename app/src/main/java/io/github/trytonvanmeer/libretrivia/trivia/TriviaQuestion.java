@@ -2,13 +2,13 @@ package io.github.trytonvanmeer.libretrivia.trivia;
 
 import java.io.Serializable;
 
-public abstract class TriviaQuestion  implements Serializable {
-    private TriviaCategory category;
-    private TriviaDifficulty difficulty;
+public abstract class TriviaQuestion implements Serializable {
+    private final TriviaCategory category;
+    private final TriviaDifficulty difficulty;
 
-    protected String question;
+    private final String question;
 
-    protected TriviaQuestion(TriviaCategory category, TriviaDifficulty difficulty, String question) {
+    TriviaQuestion(TriviaCategory category, TriviaDifficulty difficulty, String question) {
         this.category = category;
         this.difficulty = difficulty;
 

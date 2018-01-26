@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import io.github.trytonvanmeer.libretrivia.R;
 
 public class TriviaGameErrorFragment extends Fragment {
-    public final static String ARG_ERROR_MSG = "arg_error_msg";
+    private final static String ARG_ERROR_MSG = "arg_error_msg";
 
     @BindView(R.id.text_error_msg) TextView textView;
 
@@ -26,11 +26,6 @@ public class TriviaGameErrorFragment extends Fragment {
         TriviaGameErrorFragment fragment = new TriviaGameErrorFragment();
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override

@@ -23,7 +23,6 @@ import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionMultiple;
 
 
 public class TriviaQuestionFragment extends Fragment {
-    public final static String ARG_TRIVIA_QUESTION = "arg_trivia_question";
 
     private static final int radioButtonAnswerOneID = R.id.radio_button_answer_one;
     private static final int radioButtonAnswerTwoID = R.id.radio_button_answer_two;
@@ -47,11 +46,6 @@ public class TriviaQuestionFragment extends Fragment {
         TriviaQuestionFragment fragment = new TriviaQuestionFragment();
         fragment.question = question;
         return fragment;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Nullable

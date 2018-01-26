@@ -5,8 +5,8 @@ import java.util.List;
 
 public class TriviaGame implements Serializable {
     private int currentQuestion;
-    private boolean[] results;
-    private List<TriviaQuestion> questions;
+    private final boolean[] results;
+    private final List<TriviaQuestion> questions;
 
     public TriviaGame(List<TriviaQuestion> questions) {
         this.currentQuestion = 0;

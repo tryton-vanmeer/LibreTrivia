@@ -12,7 +12,7 @@ import io.github.trytonvanmeer.libretrivia.R;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 
 public class TriviaGameResultsActivity extends BaseActivity {
-    protected static final String EXTRA_TRIVIA_GAME = "extra_trivia_game";
+    static final String EXTRA_TRIVIA_GAME = "extra_trivia_game";
 
     @BindView(R.id.text_results_msg) TextView textViewResultsMsg;
 

@@ -31,7 +31,7 @@ import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
 
 public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQuestionReceiver {
-    protected static final String EXTRA_TRIVIA_QUERY = "extra_trivia_query";
+    static final String EXTRA_TRIVIA_QUERY = "extra_trivia_query";
 
     private TriviaGame game;
 
@@ -80,16 +80,16 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
         }
     }
 
-    public boolean onTriviaQuestionsDownloaded(String json) {
+    public void onTriviaQuestionsDownloaded(String json) {
         if (json == null) {
             onNetworkError();
-            return false;
+            return;
         } else {
             try {
                 this.game = new TriviaGame(Util.jsonToQuestionArray(json));
             } catch (NoTriviaResultsException e) {
                 onNoTriviaResults();
-                return false;
+                return;
             }
         }
 
@@ -100,7 +100,6 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
         buttonNextQuestion.setVisibility(View.VISIBLE);
         updateStatusBar();
         updateTriviaQuestion();
-        return true;
     }
 
     private void updateStatusBar() {
@@ -112,7 +111,7 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
                 game.getCurrentQuestion().getDifficulty().toString());
     }
 
-    public void updateTriviaQuestion() {
+    private void updateTriviaQuestion() {
         Fragment fragment = TriviaQuestionFragment.newInstance(game.getCurrentQuestion());
         getSupportFragmentManager().beginTransaction()
         .replace(R.id.frame_trivia_game, fragment)

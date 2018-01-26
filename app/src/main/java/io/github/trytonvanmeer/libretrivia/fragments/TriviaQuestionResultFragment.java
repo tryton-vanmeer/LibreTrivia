@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import io.github.trytonvanmeer.libretrivia.R;
 
 public class TriviaQuestionResultFragment extends Fragment {
-    public static final String ARG_RESULT = "arg_result";
+    private static final String ARG_RESULT = "arg_result";
 
     @BindView(R.id.button_question_result) Button buttonQuestionResult;
 
@@ -26,11 +26,6 @@ public class TriviaQuestionResultFragment extends Fragment {
         TriviaQuestionResultFragment fragment = new TriviaQuestionResultFragment();
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override

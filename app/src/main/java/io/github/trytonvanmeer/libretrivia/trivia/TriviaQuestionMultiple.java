@@ -6,8 +6,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 public class TriviaQuestionMultiple extends TriviaQuestion {
-    private String correctAnswer;
-    private String[] incorrectAnswers;
+    private final String correctAnswer;
+    private final String[] incorrectAnswers;
 
     public TriviaQuestionMultiple(TriviaCategory category, TriviaDifficulty difficulty,
                                   String question, String correctAnswer, String[] incorrectAnswers) {

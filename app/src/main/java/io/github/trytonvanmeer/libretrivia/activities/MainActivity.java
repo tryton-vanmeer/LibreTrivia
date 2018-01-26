@@ -17,7 +17,6 @@ import io.github.trytonvanmeer.libretrivia.trivia.TriviaDifficulty;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
 
 public class MainActivity extends BaseActivity {
-    private static final String TAG = "MainActivity";
 
     @BindView(R.id.button_play) Button buttonPlay;
     @BindView(R.id.spinner_category) Spinner spinnerCategory;

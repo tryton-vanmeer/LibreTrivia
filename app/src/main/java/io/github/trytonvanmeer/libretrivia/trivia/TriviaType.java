@@ -34,10 +34,6 @@ public enum TriviaType {
         return this.name;
     }
 
-    public int getDisplayName() {
-        return this.displayName;
-    }
-
     public static TriviaType get(String name) {
         return lookup.get(name);
     }

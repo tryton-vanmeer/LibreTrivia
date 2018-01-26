@@ -1,5 +1,6 @@
 package io.github.trytonvanmeer.libretrivia.activities;
 
+import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,6 +11,7 @@ import com.mikepenz.aboutlibraries.LibsBuilder;
 
 import io.github.trytonvanmeer.libretrivia.R;
 
+@SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity {
 
     @Override
@@ -34,7 +36,7 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void onAbout() {
+    private void onAbout() {
         String appName = getResources().getString(R.string.app_name);
         String appDescription = getResources().getString(R.string.app_description);
 

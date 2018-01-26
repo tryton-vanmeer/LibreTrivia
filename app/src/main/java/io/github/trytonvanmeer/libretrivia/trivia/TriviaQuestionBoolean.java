@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 
 public class TriviaQuestionBoolean extends TriviaQuestion {
 
-    private Boolean correctAnswer;
+    private final Boolean correctAnswer;
 
     public TriviaQuestionBoolean(TriviaCategory category, TriviaDifficulty difficulty,
                           String question, boolean correctAnswer) {

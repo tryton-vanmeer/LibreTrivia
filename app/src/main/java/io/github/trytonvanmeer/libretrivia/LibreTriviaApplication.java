@@ -1,10 +1,12 @@
 package io.github.trytonvanmeer.libretrivia;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
 
 public class LibreTriviaApplication extends Application {
+    @SuppressLint("StaticFieldLeak")
     private static Context context;
 
     @Override

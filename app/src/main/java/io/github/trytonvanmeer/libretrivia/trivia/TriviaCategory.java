@@ -87,12 +87,8 @@ public enum TriviaCategory {
         return this.ID;
     }
 
-    public String getName() {
+    private String getName() {
         return this.name;
-    }
-
-    public int getDisplayName() {
-        return this.displayName;
     }
 
     public static TriviaCategory get(String name) {
