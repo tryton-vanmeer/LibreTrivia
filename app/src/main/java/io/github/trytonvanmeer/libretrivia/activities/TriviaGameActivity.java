@@ -147,11 +147,16 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
                     (TriviaQuestionFragment) manager.findFragmentById(R.id.frame_trivia_game);
 
             String selectedAnswer = fragment.getSelectedAnswer();
+            boolean guess = game.nextQuestion(selectedAnswer);
 
-            Toast.makeText(TriviaGameActivity.this, selectedAnswer, Toast.LENGTH_SHORT).show();
+            int msg = guess ? R.string.ui_correct : R.string.ui_wrong;
+            Toast.makeText(TriviaGameActivity.this, msg, Toast.LENGTH_SHORT).show();
+
             manager.beginTransaction()
                     .remove(fragment)
                     .commit();
+            updateStatusBar();
+            updateTriviaQuestion();
         }
     }
 

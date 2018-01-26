@@ -26,4 +26,14 @@ public class TriviaGame {
     public int getQuestionsCount() {
         return this.questions.size();
     }
+
+    public boolean nextQuestion(String guess) {
+        TriviaQuestion question = getCurrentQuestion();
+        boolean answer = question.checkAnswer(guess);
+
+        questionsAnsweredStatus[currentQuestion] = answer;
+        currentQuestion++;
+
+        return answer;
+    }
 }
