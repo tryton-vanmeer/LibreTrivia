@@ -4,10 +4,16 @@ android:
     # The BuildTools version used by LibreTrivia
     - tools
     - build-tools-27.0.2
+    - platform-tools
 
     # The SDK version used to compile LibreTrivia
     - android-27
 
-before_install: 
-  - yes | sdkmanager "platforms;android-27;support;constraint;constraint-layout"
+before_install:
+  - echo yes | sdkmanager "tools"
+  - echo yes | sdkmanager "platforms;android-27"
+  - echo yes | sdkmanager "extras;android;m2repository"
+  - echo yes | sdkmanager "extras;google;m2repository"
+  - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
+  - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
 script: ./gradlew -Dorg.gradle.jvmargs=-Xmx1536m assembleDebug lintDebug
