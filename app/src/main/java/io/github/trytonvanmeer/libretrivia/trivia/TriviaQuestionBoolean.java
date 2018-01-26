@@ -1,5 +1,7 @@
 package io.github.trytonvanmeer.libretrivia.trivia;
 
+import android.text.Html;
+
 import com.google.gson.JsonObject;
 
 public class TriviaQuestionBoolean extends TriviaQuestion<Boolean> {
@@ -12,7 +14,7 @@ public class TriviaQuestionBoolean extends TriviaQuestion<Boolean> {
     public static TriviaQuestionBoolean fromJson(JsonObject json) {
         TriviaCategory category = TriviaCategory.get(json.get("category").getAsString());
         TriviaDifficulty difficulty = TriviaDifficulty.get(json.get("difficulty").getAsString());
-        String question = json.get("question").getAsString();
+        String question = Html.fromHtml(json.get("question").getAsString()).toString();
         Boolean correctAnswer = json.get("correct_answer").getAsBoolean();
 
         return new TriviaQuestionBoolean(category, difficulty, question, correctAnswer);

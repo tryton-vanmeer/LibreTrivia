@@ -1,5 +1,7 @@
 package io.github.trytonvanmeer.libretrivia.trivia;
 
+import android.text.Html;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -23,14 +25,14 @@ public class TriviaQuestionMultiple extends TriviaQuestion<String> {
     public static TriviaQuestionMultiple fromJson(JsonObject json) {
         TriviaCategory category = TriviaCategory.get(json.get("category").getAsString());
         TriviaDifficulty difficulty = TriviaDifficulty.get(json.get("difficulty").getAsString());
-        String question = json.get("question").getAsString();
+        String question = Html.fromHtml(json.get("question").getAsString()).toString();
         String correctAnswer = json.get("correct_answer").getAsString();
 
         JsonArray incorrectAnswersJson = json.get("incorrect_answers").getAsJsonArray();
         String[] incorrectAnswers = new String[]{
-                incorrectAnswersJson.get(0).getAsString(),
-                incorrectAnswersJson.get(1).getAsString(),
-                incorrectAnswersJson.get(2).getAsString()
+                Html.fromHtml(incorrectAnswersJson.get(0).getAsString()).toString(),
+                Html.fromHtml(incorrectAnswersJson.get(1).getAsString()).toString(),
+                Html.fromHtml(incorrectAnswersJson.get(2).getAsString()).toString()
         };
 
         return new TriviaQuestionMultiple(
