@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -29,6 +30,7 @@ public class TriviaQuestionFragment extends Fragment {
     private static final int radioButtonAnswerFourID = R.id.radio_button_answer_four;
 
     private TriviaQuestion question;
+
 
     @BindViews({
             radioButtonAnswerOneID,
@@ -64,6 +66,9 @@ public class TriviaQuestionFragment extends Fragment {
         } else {
             view = inflater.inflate(R.layout.fragment_trivia_question_boolean, container, false);
         }
+
+        TextView textViewQuestion = view.findViewById(R.id.text_trivia_question);
+        textViewQuestion.setText(question.getQuestion());
 
         return view;
     }
