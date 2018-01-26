@@ -27,7 +27,6 @@ import io.github.trytonvanmeer.libretrivia.fragments.TriviaQuestionFragment;
 import io.github.trytonvanmeer.libretrivia.interfaces.IDownloadTriviaQuestionReceiver;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
-import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestion;
 
 public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQuestionReceiver {
     protected static final String EXTRA_TRIVIA_QUERY = "extra_trivia_query";
@@ -103,8 +102,8 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
     }
 
     private void updateStatusBar() {
-        progressBar.setProgress(game.getCurrentQuestionCount());
-        progressBar.setText(Integer.toString(game.getCurrentQuestionCount()));
+        progressBar.setProgress(game.getQuestionProgress());
+        progressBar.setText(Integer.toString(game.getQuestionProgress()));
         textViewQuestionCategory.setText(
                 game.getCurrentQuestion().getCategory().toString());
         textViewQuestionDifficulty.setText(

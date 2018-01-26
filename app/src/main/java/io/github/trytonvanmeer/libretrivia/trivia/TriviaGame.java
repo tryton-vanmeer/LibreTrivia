@@ -19,7 +19,7 @@ public class TriviaGame {
         return this.questions.get(currentQuestion);
     }
 
-    public int getCurrentQuestionCount() {
+    public int getQuestionProgress() {
         return this.currentQuestion + 1;
     }
 
