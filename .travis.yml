@@ -9,8 +9,5 @@ android:
     - android-27
 
 before_install: 
-  - yes | sdkmanager "platforms;android-27"
+  - yes | sdkmanager "platforms;android-27;support;constraint;constraint-layout"
 script: ./gradlew -Dorg.gradle.jvmargs=-Xmx1536m assembleDebug lintDebug
-
-licenses:
-- '.+'
