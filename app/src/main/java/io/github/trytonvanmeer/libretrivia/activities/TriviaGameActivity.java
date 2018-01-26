@@ -2,6 +2,7 @@ package io.github.trytonvanmeer.libretrivia.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -156,20 +157,22 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .commit();
 
-            if (game.isDone()) {
-                // TODO: Display results screen if reached end of questions
-                finish();
-            } else {
-                buttonNextQuestion.setEnabled(false);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+            buttonNextQuestion.setEnabled(false);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (game.isDone()) {
+                        Intent intent = new Intent(getApplicationContext(), TriviaGameResultsActivity.class);
+                        intent.putExtra(TriviaGameResultsActivity.EXTRA_TRIVIA_GAME, game);
+                        startActivity(intent);
+                        finish();
+                    } else {
                         updateStatusBar();
                         updateTriviaQuestion();
                         buttonNextQuestion.setEnabled(true);
                     }
-                }, 1000);
-            }
+                }
+            }, 1000);
         }
     }
 

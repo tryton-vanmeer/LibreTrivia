@@ -1,8 +1,9 @@
 package io.github.trytonvanmeer.libretrivia.trivia;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class TriviaGame {
+public class TriviaGame implements Serializable {
     private static final String TAG = "TriviaGame";
 
     private int currentQuestion;
