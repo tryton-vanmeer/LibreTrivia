@@ -1,0 +1,1 @@
+Simple trivia game for Android. Uses the Open Trivia Database's API.
