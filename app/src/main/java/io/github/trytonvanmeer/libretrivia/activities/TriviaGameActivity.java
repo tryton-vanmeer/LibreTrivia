@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -34,6 +35,7 @@ import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestion;
 public class TriviaGameActivity extends BaseActivity
         implements IDownloadTriviaQuestionReceiver {
     static final String EXTRA_TRIVIA_QUERY = "extra_trivia_query";
+    private final String STATE_TRIVIA_GAME = "state_trivia_game";
 
     private TriviaGame game;
 
@@ -49,13 +51,23 @@ public class TriviaGameActivity extends BaseActivity
         setContentView(R.layout.activity_trivia_game);
         ButterKnife.bind(this);
 
-        Bundle bundle = getIntent().getExtras();
-        assert bundle != null;
-        TriviaQuery query = (TriviaQuery) bundle.get(EXTRA_TRIVIA_QUERY);
+        if (savedInstanceState != null) {
+            this.game = (TriviaGame) savedInstanceState.getSerializable(STATE_TRIVIA_GAME);
+        } else {
+            Bundle bundle = getIntent().getExtras();
+            assert bundle != null;
+            TriviaQuery query = (TriviaQuery) bundle.get(EXTRA_TRIVIA_QUERY);
 
-        DownloadTriviaQuestionsTask task = new DownloadTriviaQuestionsTask();
-        task.setReceiver(this);
-        task.execute(query);
+            DownloadTriviaQuestionsTask task = new DownloadTriviaQuestionsTask();
+            task.setReceiver(this);
+            task.execute(query);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(STATE_TRIVIA_GAME, this.game);
     }
 
     @Override
@@ -141,6 +153,10 @@ public class TriviaGameActivity extends BaseActivity
         ft.commit();
     }
 
+    public TriviaQuestion getCurrentQuestion() {
+        return this.game.getCurrentQuestion();
+    }
+
     private class NextButtonListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
@@ -199,9 +215,5 @@ public class TriviaGameActivity extends BaseActivity
         private void setReceiver(IDownloadTriviaQuestionReceiver receiver) {
             this.receiver = receiver;
         }
-    }
-
-    public TriviaQuestion getCurrentQuestion() {
-        return this.game.getCurrentQuestion();
     }
 }
