@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,8 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.github.lzyzsd.circleprogress.DonutProgress;
 
 import java.io.IOException;
 
@@ -42,7 +39,7 @@ public class TriviaGameActivity extends BaseActivity
     @BindView(R.id.trivia_status_bar) LinearLayout triviaStatusBar;
     @BindView(R.id.text_question_category) TextView textViewQuestionCategory;
     @BindView(R.id.text_question_difficulty) TextView textViewQuestionDifficulty;
-    @BindView(R.id.progress_questions) DonutProgress progressBar;
+    @BindView(R.id.text_question_progress) TextView textViewQuestionProgress;
     @BindView(R.id.button_next_question) Button buttonNextQuestion;
 
     @Override
@@ -108,7 +105,6 @@ public class TriviaGameActivity extends BaseActivity
         }
 
         // Setup game layout
-        progressBar.setMax(game.getQuestionsCount());
         triviaStatusBar.setVisibility(View.VISIBLE);
         buttonNextQuestion.setOnClickListener(new NextButtonListener());
         buttonNextQuestion.setVisibility(View.VISIBLE);
@@ -117,8 +113,9 @@ public class TriviaGameActivity extends BaseActivity
     }
 
     private void updateStatusBar() {
-        progressBar.setProgress(game.getQuestionProgress());
-        progressBar.setText(Integer.toString(game.getQuestionProgress()));
+        textViewQuestionProgress.setText(
+                getResources().getString(R.string.ui_question_progress,
+                        game.getQuestionProgress(), game.getQuestionsCount()));
         textViewQuestionCategory.setText(
                 game.getCurrentQuestion().getCategory().toString());
         textViewQuestionDifficulty.setText(
