@@ -50,11 +50,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorAccent"
-            android:textColor="@color/colorText"
+            android:textSize="24sp"
             android:text="@string/ui_start_game"
-            android:textAlignment="center"
-            android:textSize="24sp" />
+            style="@style/Button"/>
 
     </LinearLayout>
 
