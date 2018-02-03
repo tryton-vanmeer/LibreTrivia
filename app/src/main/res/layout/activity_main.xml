@@ -19,42 +19,30 @@
         
         <!-- Select Amount -->
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:labelFor="@id/spinner_number"
-            android:textSize="18sp"
-            android:text="@string/ui_amount" />
+            android:text="@string/ui_amount"
+            style="@style/TextLabel" />
         <Spinner
             android:id="@+id/spinner_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            style="@style/Spinner" />
 
         <!-- Select Category Spinner -->
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:labelFor="@id/spinner_category"
-            android:textSize="18sp"
-            android:text="@string/ui_category" />
+            android:text="@string/ui_category"
+            style="@style/TextLabel" />
         <Spinner
             android:id="@+id/spinner_category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            style="@style/Spinner" />
 
         <!-- Select Difficulty Spinner -->
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:labelFor="@id/spinner_difficulty"
-            android:textSize="18sp"
-            android:text="@string/ui_difficulty" />
+            android:text="@string/ui_difficulty"
+            style="@style/TextLabel" />
         <Spinner
             android:id="@+id/spinner_difficulty"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            style="@style/Spinner" />
 
         <!-- Play Button -->
         <Button
