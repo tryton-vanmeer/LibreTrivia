@@ -29,8 +29,10 @@ import io.github.trytonvanmeer.libretrivia.fragments.TriviaQuestionResultFragmen
 import io.github.trytonvanmeer.libretrivia.interfaces.IDownloadTriviaQuestionReceiver;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
+import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestion;
 
-public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQuestionReceiver {
+public class TriviaGameActivity extends BaseActivity
+        implements IDownloadTriviaQuestionReceiver {
     static final String EXTRA_TRIVIA_QUERY = "extra_trivia_query";
 
     private TriviaGame game;
@@ -112,7 +114,7 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
     }
 
     private void updateTriviaQuestion() {
-        Fragment fragment = TriviaQuestionFragment.newInstance(game.getCurrentQuestion());
+        Fragment fragment = TriviaQuestionFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
         .replace(R.id.frame_trivia_game, fragment)
         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -197,5 +199,9 @@ public class TriviaGameActivity extends BaseActivity implements IDownloadTriviaQ
         private void setReceiver(IDownloadTriviaQuestionReceiver receiver) {
             this.receiver = receiver;
         }
+    }
+
+    public TriviaQuestion getCurrentQuestion() {
+        return this.game.getCurrentQuestion();
     }
 }

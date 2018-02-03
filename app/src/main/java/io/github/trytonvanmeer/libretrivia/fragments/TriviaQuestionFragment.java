@@ -18,6 +18,7 @@ import java.util.List;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import io.github.trytonvanmeer.libretrivia.R;
+import io.github.trytonvanmeer.libretrivia.activities.TriviaGameActivity;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestion;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionMultiple;
 
@@ -29,7 +30,6 @@ public class TriviaQuestionFragment extends Fragment {
     private static final int radioButtonAnswerThreeID = R.id.radio_button_answer_three;
     private static final int radioButtonAnswerFourID = R.id.radio_button_answer_four;
 
-    private TriviaQuestion question;
     private RadioGroup radioGroup;
 
     @BindViews({
@@ -42,16 +42,15 @@ public class TriviaQuestionFragment extends Fragment {
 
     public TriviaQuestionFragment() {}
 
-    public static TriviaQuestionFragment newInstance(TriviaQuestion question) {
-        TriviaQuestionFragment fragment = new TriviaQuestionFragment();
-        fragment.question = question;
-        return fragment;
+    public static TriviaQuestionFragment newInstance() {
+        return new TriviaQuestionFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        TriviaQuestion question = ((TriviaGameActivity) getActivity()).getCurrentQuestion();
         View view;
 
         if (question instanceof TriviaQuestionMultiple) {
@@ -71,8 +70,10 @@ public class TriviaQuestionFragment extends Fragment {
     }
 
     private void setupRadioButtons() {
+        TriviaQuestion question = ((TriviaGameActivity) getActivity()).getCurrentQuestion();
+
         List<String> answers = Arrays.asList((
-                (TriviaQuestionMultiple) this.question).getAnswerList());
+                (TriviaQuestionMultiple) question).getAnswerList());
         Collections.shuffle(answers);
 
         radioButtonAnswers[0].setText(answers.get(0));
