@@ -1,4 +1,4 @@
-package io.github.trytonvanmeer.libretrivia;
+package io.github.trytonvanmeer.libretrivia.util;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -21,7 +21,7 @@ import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionBoolean;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionMultiple;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaType;
 
-public class Util {
+public class ApiUtil {
 
     private static String readStream(InputStream in) throws IOException {
         StringBuilder builder = new StringBuilder();

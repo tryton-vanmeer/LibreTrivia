@@ -23,7 +23,7 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.trytonvanmeer.libretrivia.R;
-import io.github.trytonvanmeer.libretrivia.Util;
+import io.github.trytonvanmeer.libretrivia.util.ApiUtil;
 import io.github.trytonvanmeer.libretrivia.exceptions.NoTriviaResultsException;
 import io.github.trytonvanmeer.libretrivia.fragments.TriviaGameErrorFragment;
 import io.github.trytonvanmeer.libretrivia.fragments.TriviaQuestionFragment;
@@ -102,7 +102,7 @@ public class TriviaGameActivity extends BaseActivity
             return;
         } else {
             try {
-                this.game = new TriviaGame(Util.jsonToQuestionArray(json));
+                this.game = new TriviaGame(ApiUtil.jsonToQuestionArray(json));
             } catch (NoTriviaResultsException e) {
                 onNoTriviaResults();
                 return;
@@ -177,6 +177,8 @@ public class TriviaGameActivity extends BaseActivity
         }
 
 
+
+
         new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -200,7 +202,7 @@ public class TriviaGameActivity extends BaseActivity
         protected String doInBackground(TriviaQuery... query) {
             String json;
             try {
-                json = Util.GET(query[0]);
+                json = ApiUtil.GET(query[0]);
             } catch (IOException e) {
                 return null;
             }
