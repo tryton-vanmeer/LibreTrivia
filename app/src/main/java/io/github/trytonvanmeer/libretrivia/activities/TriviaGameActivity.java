@@ -3,13 +3,17 @@ package io.github.trytonvanmeer.libretrivia.activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,7 +26,6 @@ import io.github.trytonvanmeer.libretrivia.Util;
 import io.github.trytonvanmeer.libretrivia.exceptions.NoTriviaResultsException;
 import io.github.trytonvanmeer.libretrivia.fragments.TriviaGameErrorFragment;
 import io.github.trytonvanmeer.libretrivia.fragments.TriviaQuestionFragment;
-import io.github.trytonvanmeer.libretrivia.fragments.TriviaQuestionResultFragment;
 import io.github.trytonvanmeer.libretrivia.interfaces.IDownloadTriviaQuestionReceiver;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
@@ -150,17 +153,20 @@ public class TriviaGameActivity extends BaseActivity
         return this.game.getCurrentQuestion();
     }
 
-    public void onAnswerClick(String answer) {
-        FragmentManager manager = getSupportFragmentManager();
+    public void onAnswerClick(Button answer) {
+        boolean guess = game.nextQuestion(answer.getText().toString());
 
-        boolean guess = game.nextQuestion(answer);
+        int color = guess ? getResources().getColor(R.color.colorAccentGreen)
+                          : getResources().getColor(R.color.colorAccentRed);
 
-        Fragment resultFragment = TriviaQuestionResultFragment.newInstance(guess);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ColorStateList stateList = ColorStateList.valueOf(color);
+            answer.setBackgroundTintList(stateList);
+        } else {
+            answer.getBackground().getCurrent().setColorFilter(
+                    new PorterDuffColorFilter(color, PorterDuff.Mode.MULTIPLY));
+        }
 
-        manager.beginTransaction()
-                .replace(R.id.frame_trivia_game, resultFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit();
 
         new Handler().postDelayed(new Runnable() {
                 @Override
@@ -175,7 +181,7 @@ public class TriviaGameActivity extends BaseActivity
                         updateTriviaQuestion();
                     }
                 }
-            }, 1000);
+            }, 500);
     }
 
     private static class DownloadTriviaQuestionsTask extends AsyncTask<TriviaQuery, Integer, String> {

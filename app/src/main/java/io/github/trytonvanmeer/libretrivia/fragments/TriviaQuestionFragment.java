@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -97,8 +96,7 @@ public class TriviaQuestionFragment extends Fragment {
     private class AnswerButtonListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            String answer = ((Button) v).getText().toString();
-            ((TriviaGameActivity) getActivity()).onAnswerClick(answer);
+            ((TriviaGameActivity) getActivity()).onAnswerClick((Button) v);
         }
     }
 }
