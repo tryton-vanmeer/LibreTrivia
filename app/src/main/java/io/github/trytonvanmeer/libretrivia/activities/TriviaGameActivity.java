@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -40,7 +39,6 @@ public class TriviaGameActivity extends BaseActivity
     @BindView(R.id.text_question_category) TextView textViewQuestionCategory;
     @BindView(R.id.text_question_difficulty) TextView textViewQuestionDifficulty;
     @BindView(R.id.text_question_progress) TextView textViewQuestionProgress;
-    @BindView(R.id.button_next_question) Button buttonNextQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,8 +104,6 @@ public class TriviaGameActivity extends BaseActivity
 
         // Setup game layout
         triviaStatusBar.setVisibility(View.VISIBLE);
-        buttonNextQuestion.setOnClickListener(new NextButtonListener());
-        buttonNextQuestion.setVisibility(View.VISIBLE);
         updateStatusBar();
         updateTriviaQuestion();
     }
@@ -154,25 +150,19 @@ public class TriviaGameActivity extends BaseActivity
         return this.game.getCurrentQuestion();
     }
 
-    private class NextButtonListener implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
-            FragmentManager manager = getSupportFragmentManager();
-            TriviaQuestionFragment questionFragment =
-                    (TriviaQuestionFragment) manager.findFragmentById(R.id.frame_trivia_game);
+    public void onAnswerClick(String answer) {
+        FragmentManager manager = getSupportFragmentManager();
 
-            String selectedAnswer = questionFragment.getSelectedAnswer();
-            boolean guess = game.nextQuestion(selectedAnswer);
+        boolean guess = game.nextQuestion(answer);
 
-            Fragment resultFragment = TriviaQuestionResultFragment.newInstance(guess);
+        Fragment resultFragment = TriviaQuestionResultFragment.newInstance(guess);
 
-            manager.beginTransaction()
-                    .replace(R.id.frame_trivia_game, resultFragment)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .commit();
+        manager.beginTransaction()
+                .replace(R.id.frame_trivia_game, resultFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit();
 
-            buttonNextQuestion.setEnabled(false);
-            new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     if (game.isDone()) {
@@ -183,11 +173,9 @@ public class TriviaGameActivity extends BaseActivity
                     } else {
                         updateStatusBar();
                         updateTriviaQuestion();
-                        buttonNextQuestion.setEnabled(true);
                     }
                 }
             }, 1000);
-        }
     }
 
     private static class DownloadTriviaQuestionsTask extends AsyncTask<TriviaQuery, Integer, String> {

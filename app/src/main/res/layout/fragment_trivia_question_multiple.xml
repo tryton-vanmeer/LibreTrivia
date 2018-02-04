@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,6 +10,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -22,36 +24,35 @@
             android:textAlignment="center"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:labelFor="@+id/radio_group_answers" />
+            tools:text="What is the answer to this question?" />
 
-        <RadioGroup
-            android:id="@+id/radio_group_answers"
+        <Button
+            android:id="@+id/button_answer_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:checkedButton="@id/radio_button_answer_one">
+            tools:text="Question 1"
+            style="@style/AnswerButton" />
 
-            <RadioButton
-                android:id="@+id/radio_button_answer_one"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/button_answer_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Question 2"
+            style="@style/AnswerButton" />
 
-            <RadioButton
-                android:id="@+id/radio_button_answer_two"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/button_answer_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Question 3"
+            style="@style/AnswerButton" />
 
-            <RadioButton
-                android:id="@+id/radio_button_answer_three"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <RadioButton
-                android:id="@+id/radio_button_answer_four"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </RadioGroup>
+        <Button
+            android:id="@+id/button_answer_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Question 4"
+            style="@style/AnswerButton" />
 
     </LinearLayout>
 

@@ -7,8 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -25,20 +25,21 @@ import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionMultiple;
 
 public class TriviaQuestionFragment extends Fragment {
 
-    private static final int radioButtonAnswerOneID = R.id.radio_button_answer_one;
-    private static final int radioButtonAnswerTwoID = R.id.radio_button_answer_two;
-    private static final int radioButtonAnswerThreeID = R.id.radio_button_answer_three;
-    private static final int radioButtonAnswerFourID = R.id.radio_button_answer_four;
-
-    private RadioGroup radioGroup;
+    private static final int buttonAnswerOneID = R.id.button_answer_one;
+    private static final int buttonAnswerTwoID = R.id.button_answer_two;
+    private static final int buttonAnswerThreeID = R.id.button_answer_three;
+    private static final int buttonAnswerFourID = R.id.button_answer_four;
 
     @BindViews({
-            radioButtonAnswerOneID,
-            radioButtonAnswerTwoID,
-            radioButtonAnswerThreeID,
-            radioButtonAnswerFourID
+            buttonAnswerOneID,
+            buttonAnswerTwoID,
+            buttonAnswerThreeID,
+            buttonAnswerFourID
     })
-    RadioButton[] radioButtonAnswers;
+    Button[] buttonAnswers;
+
+    Button buttonAnswerTrue;
+    Button buttonAnswerFalse;
 
     public TriviaQuestionFragment() {}
 
@@ -56,35 +57,48 @@ public class TriviaQuestionFragment extends Fragment {
         if (question instanceof TriviaQuestionMultiple) {
             view = inflater.inflate(R.layout.fragment_trivia_question_multiple, container, false);
             ButterKnife.bind(this, view);
-            setupRadioButtons();
         } else {
             view = inflater.inflate(R.layout.fragment_trivia_question_boolean, container, false);
+            this.buttonAnswerTrue = view.findViewById(R.id.button_answer_true);
+            this.buttonAnswerFalse = view.findViewById(R.id.button_answer_false);
         }
-
-        this.radioGroup = view.findViewById(R.id.radio_group_answers);
 
         TextView textViewQuestion = view.findViewById(R.id.text_trivia_question);
         textViewQuestion.setText(question.getQuestion());
+        setupButtons();
 
         return view;
     }
 
-    private void setupRadioButtons() {
+    private void setupButtons() {
+        AnswerButtonListener listener = new AnswerButtonListener();
         TriviaQuestion question = ((TriviaGameActivity) getActivity()).getCurrentQuestion();
 
-        List<String> answers = Arrays.asList((
-                (TriviaQuestionMultiple) question).getAnswerList());
-        Collections.shuffle(answers);
+        if (question instanceof TriviaQuestionMultiple) {
+            List<String> answers = Arrays.asList((
+                    (TriviaQuestionMultiple) question).getAnswerList());
+            Collections.shuffle(answers);
 
-        radioButtonAnswers[0].setText(answers.get(0));
-        radioButtonAnswers[1].setText(answers.get(1));
-        radioButtonAnswers[2].setText(answers.get(2));
-        radioButtonAnswers[3].setText(answers.get(3));
+            buttonAnswers[0].setText(answers.get(0));
+            buttonAnswers[1].setText(answers.get(1));
+            buttonAnswers[2].setText(answers.get(2));
+            buttonAnswers[3].setText(answers.get(3));
+
+            buttonAnswers[0].setOnClickListener(listener);
+            buttonAnswers[1].setOnClickListener(listener);
+            buttonAnswers[2].setOnClickListener(listener);
+            buttonAnswers[3].setOnClickListener(listener);
+        } else  {
+            buttonAnswerTrue.setOnClickListener(listener);
+            buttonAnswerFalse.setOnClickListener(listener);
+        }
     }
 
-    public String getSelectedAnswer() {
-        int selectedId = radioGroup.getCheckedRadioButtonId();
-        RadioButton selected = radioGroup.findViewById(selectedId);
-        return selected.getText().toString();
+    private class AnswerButtonListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            String answer = ((Button) v).getText().toString();
+            ((TriviaGameActivity) getActivity()).onAnswerClick(answer);
+        }
     }
 }
