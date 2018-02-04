@@ -1,10 +1,9 @@
 package io.github.trytonvanmeer.libretrivia.activities;
 
 import android.os.Bundle;
-import android.text.Html;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -14,7 +13,10 @@ import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 public class TriviaGameResultsActivity extends BaseActivity {
     static final String EXTRA_TRIVIA_GAME = "extra_trivia_game";
 
-    @BindView(R.id.text_results_msg) TextView textViewResultsMsg;
+    @BindView(R.id.text_results_correct) TextView textResultsCorrect;
+    @BindView(R.id.text_results_wrong) TextView textResultsWrong;
+    @BindView(R.id.text_results_total) TextView textResultsTotal;
+    @BindView(R.id.button_return_to_menu) Button buttonReturnToMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,27 +24,26 @@ public class TriviaGameResultsActivity extends BaseActivity {
         setContentView(R.layout.activity_trivia_game_results);
         ButterKnife.bind(this);
 
-        //noinspection ConstantConditions
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        TriviaGame game;
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            game = (TriviaGame) bundle.get(EXTRA_TRIVIA_GAME);
+        TriviaGame game = (TriviaGame) bundle.get(EXTRA_TRIVIA_GAME);
 
-            if (game != null) {
-                int correctTotal = 0;
+        int correctTotal = 0;
 
-                for (boolean result : game.getResults()) {
-                    if (result) {
-                        correctTotal++;
-                    }
-                }
-
-                String msg = String.format(Locale.US,"<sup>%d</sup>&frasl;<sub>%d</sub>",
-                        correctTotal, game.getQuestionsCount());
-                textViewResultsMsg.setText(Html.fromHtml(msg));
+        for (boolean result : game.getResults()) {
+            if (result) {
+                correctTotal++;
             }
         }
+
+        textResultsCorrect.setText(String.valueOf(correctTotal));
+        textResultsWrong.setText(String.valueOf(game.getQuestionsCount() - correctTotal));
+        textResultsTotal.setText(String.valueOf(game.getQuestionsCount()));
+
+        buttonReturnToMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

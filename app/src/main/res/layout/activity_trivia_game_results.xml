@@ -1,38 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="io.github.trytonvanmeer.libretrivia.activities.TriviaGameResultsActivity">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:tint="@color/colorTextSecondary"
+        android:src="@drawable/ic_clipboard_text" />
+
+    <!-- Total Answers -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-            
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/ui_results"
-                android:textAlignment="center"
-                android:textSize="48sp" />
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:text="@string/ui_results_total" />
 
-            <TextView
-                android:id="@+id/text_results_msg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="50dp"
-                android:paddingBottom="50dp"
-                android:textAlignment="center"
-                android:textSize="48sp" />
+        <TextView
+            android:id="@+id/text_results_total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            tools:text="10" />
 
-        </LinearLayout>
+    </LinearLayout>
 
+    <!-- Correct Answers -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccentGreen"
+            android:text="@string/ui_results_correct" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/text_results_correct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            tools:text="6" />
+
+    </LinearLayout>
+
+    <!-- Wrong Answers-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccentRed"
+            android:text="@string/ui_results_wrong" />
+
+        <TextView
+            android:id="@+id/text_results_wrong"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            tools:text="4" />
+
+    </LinearLayout>
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/button_return_to_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/ui_return_to_menu"
+            style="@style/Button" />
+
+    </LinearLayout>
+
+</LinearLayout>
