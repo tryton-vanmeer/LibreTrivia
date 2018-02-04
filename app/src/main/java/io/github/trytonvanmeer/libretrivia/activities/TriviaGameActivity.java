@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class TriviaGameActivity extends BaseActivity
 
     private TriviaGame game;
 
+    @BindView(R.id.progress_bar) ProgressBar progressBar;
     @BindView(R.id.trivia_status_bar) LinearLayout triviaStatusBar;
     @BindView(R.id.text_question_category) TextView textViewQuestionCategory;
     @BindView(R.id.text_question_difficulty) TextView textViewQuestionDifficulty;
@@ -106,6 +108,7 @@ public class TriviaGameActivity extends BaseActivity
         }
 
         // Setup game layout
+        progressBar.setVisibility(View.GONE);
         triviaStatusBar.setVisibility(View.VISIBLE);
         updateStatusBar();
         updateTriviaQuestion();
