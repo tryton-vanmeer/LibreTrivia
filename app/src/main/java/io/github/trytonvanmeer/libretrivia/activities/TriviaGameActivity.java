@@ -115,13 +115,17 @@ public class TriviaGameActivity extends BaseActivity
     }
 
     private void updateStatusBar() {
-        textViewQuestionProgress.setText(
-                getResources().getString(R.string.ui_question_progress,
-                        game.getQuestionProgress(), game.getQuestionsCount()));
-        textViewQuestionCategory.setText(
-                game.getCurrentQuestion().getCategory().toString());
-        textViewQuestionDifficulty.setText(
-                game.getCurrentQuestion().getDifficulty().toString());
+        String progress = getResources().getString(R.string.ui_question_progress,
+                game.getQuestionProgress(), game.getQuestionsCount());
+
+        String category = (game.getCurrentQuestion().getCategory() != null)
+                        ? game.getCurrentQuestion().getCategory().toString() : "";
+
+        String difficulty = game.getCurrentQuestion().getDifficulty().toString();
+
+        textViewQuestionProgress.setText(progress);
+        textViewQuestionCategory.setText(category);
+        textViewQuestionDifficulty.setText(difficulty);
     }
 
     private void updateTriviaQuestion() {
