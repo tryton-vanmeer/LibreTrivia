@@ -31,6 +31,7 @@ import io.github.trytonvanmeer.libretrivia.interfaces.IDownloadTriviaQuestionRec
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestion;
+import io.github.trytonvanmeer.libretrivia.util.SoundUtil;
 
 public class TriviaGameActivity extends BaseActivity
         implements IDownloadTriviaQuestionReceiver {
@@ -176,8 +177,8 @@ public class TriviaGameActivity extends BaseActivity
                     new PorterDuffColorFilter(color, PorterDuff.Mode.MULTIPLY));
         }
 
-
-
+        SoundUtil.playSound(this, guess ?
+                SoundUtil.SOUND_ANSWER_CORRECT : SoundUtil.SOUND_ANSWER_WRONG);
 
         new Handler().postDelayed(new Runnable() {
                 @Override
