@@ -58,6 +58,8 @@ public class TriviaGameActivity extends BaseActivity
             assert bundle != null;
             TriviaQuery query = (TriviaQuery) bundle.get(EXTRA_TRIVIA_QUERY);
 
+            progressBar.setVisibility(View.VISIBLE);
+
             DownloadTriviaQuestionsTask task = new DownloadTriviaQuestionsTask();
             task.setReceiver(this);
             task.execute(query);
