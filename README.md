@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/tryton-vanmeer/LibreTrivia"><img src="app/src/main/web_hi_res_512.png" width="150"/></a></p>
+<p align="center"><a href="https://github.com/tryton-vanmeer/LibreTrivia"><img src="app/src/main/ic_launcher-web.png" width="150"/></a></p>
 <h2 align="center"><b>LibreTrivia</b></h2>
 <h4 align="center">An Open Source Trivia Game for Android</h4>
 <!-- TODO: Setup F-Droid inclusion -->
