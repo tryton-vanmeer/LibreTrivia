@@ -93,9 +93,23 @@ public class TriviaQuestionFragment extends Fragment {
         }
     }
 
+    private void disableButtons() {
+        TriviaQuestion question = ((TriviaGameActivity) getActivity()).getCurrentQuestion();
+        if (question instanceof TriviaQuestionMultiple) {
+            buttonAnswers[0].setEnabled(false);
+            buttonAnswers[1].setEnabled(false);
+            buttonAnswers[2].setEnabled(false);
+            buttonAnswers[3].setEnabled(false);
+        } else {
+            buttonAnswerTrue.setEnabled(false);
+            buttonAnswerFalse.setEnabled(false);
+        }
+    }
+
     private class AnswerButtonListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
+            disableButtons();
             ((TriviaGameActivity) getActivity()).onAnswerClick((Button) v);
         }
     }
