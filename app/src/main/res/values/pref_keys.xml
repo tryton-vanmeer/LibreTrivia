@@ -1,0 +1,4 @@
+<resources>
+    <string name="pref_category_sound">pref_key_category_sound</string>
+    <string name="pref_sound_answer">pref_sound_answer</string>
+</resources>

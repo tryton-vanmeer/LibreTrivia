@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".activities.TriviaGameActivity" />
         <activity android:name=".activities.TriviaGameResultsActivity" />
+        <activity android:name=".settings.SettingsActivity" />
     </application>
 
 </manifest>

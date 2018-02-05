@@ -61,4 +61,9 @@
     <!-- Error Strings -->
     <string name="error_network"><b>Network Error!</b>\n Could not connect to a network.</string>
     <string name="error_no_trivia_results"><b>No Trivia Results!</b>\n Was not able to find trivia questions that satisfied all options.</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Setting Strings-->
+    <string name="pref_category_sound_title">Sound</string>
+    <string name="pref_sound_answer_title">Answer Sound Effect</string>
 </resources>

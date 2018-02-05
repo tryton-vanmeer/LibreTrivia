@@ -1,6 +1,7 @@
 package io.github.trytonvanmeer.libretrivia.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,6 +11,7 @@ import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 
 import io.github.trytonvanmeer.libretrivia.R;
+import io.github.trytonvanmeer.libretrivia.settings.SettingsActivity;
 
 @SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity {
@@ -25,6 +27,7 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.settings:
+                onSettings();
                 return true;
             case R.id.about:
                 onAbout();
@@ -34,6 +37,11 @@ public class BaseActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void onSettings() {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 
     private void onAbout() {

@@ -23,7 +23,6 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.trytonvanmeer.libretrivia.R;
-import io.github.trytonvanmeer.libretrivia.util.ApiUtil;
 import io.github.trytonvanmeer.libretrivia.exceptions.NoTriviaResultsException;
 import io.github.trytonvanmeer.libretrivia.fragments.TriviaGameErrorFragment;
 import io.github.trytonvanmeer.libretrivia.fragments.TriviaQuestionFragment;
@@ -31,6 +30,7 @@ import io.github.trytonvanmeer.libretrivia.interfaces.IDownloadTriviaQuestionRec
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaGame;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestion;
+import io.github.trytonvanmeer.libretrivia.util.ApiUtil;
 import io.github.trytonvanmeer.libretrivia.util.SoundUtil;
 
 public class TriviaGameActivity extends BaseActivity
