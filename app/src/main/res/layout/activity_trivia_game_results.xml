@@ -23,19 +23,13 @@
         android:layout_marginBottom="16dp">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="center"
             android:textColor="@color/colorAccent"
-            android:text="@string/ui_results_total" />
+            android:text="@string/ui_results_total"
+            style="@style/ResultText" />
 
         <TextView
             android:id="@+id/text_results_total"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="center"
+            style="@style/ResultText"
             tools:text="10" />
 
     </LinearLayout>
@@ -47,19 +41,13 @@
         android:layout_marginBottom="16dp">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="center"
             android:textColor="@color/colorAccentGreen"
-            android:text="@string/ui_results_correct" />
+            android:text="@string/ui_results_correct"
+            style="@style/ResultText" />
 
         <TextView
             android:id="@+id/text_results_correct"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="center"
+            style="@style/ResultText"
             tools:text="6" />
 
     </LinearLayout>
@@ -71,19 +59,13 @@
         android:layout_marginBottom="16dp">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="center"
             android:textColor="@color/colorAccentRed"
-            android:text="@string/ui_results_wrong" />
+            android:text="@string/ui_results_wrong"
+            style="@style/ResultText"/>
 
         <TextView
             android:id="@+id/text_results_wrong"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="center"
+            style="@style/ResultText"
             tools:text="4" />
 
     </LinearLayout>
