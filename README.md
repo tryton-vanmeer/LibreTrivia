@@ -17,7 +17,12 @@
 [<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width=160>](fastlane/metadata/android/en-US/images/phoneScreenshots/4.png)
 [<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5.png" width=160>](fastlane/metadata/android/en-US/images/phoneScreenshots/5.png)
 
+## Description
+
+A simple Trivia game for Android that uses the [Open Trivia Database](https://opentdb.com/).
+
 # Contribution
+
 If you are a developer and wish to contribute to the app, please fork the project and submit a pull request.
 
 ## License
