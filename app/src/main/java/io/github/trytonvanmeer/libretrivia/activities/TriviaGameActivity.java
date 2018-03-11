@@ -163,18 +163,28 @@ public class TriviaGameActivity extends BaseActivity
         return this.game.getCurrentQuestion();
     }
 
-    public void onAnswerClick(Button answer) {
+    public void onAnswerClick(Button answer, Button correctAnswer) {
         boolean guess = game.nextQuestion(answer.getText().toString());
 
-        int color = guess ? getResources().getColor(R.color.colorAccentGreen)
+        final int green = getResources().getColor(R.color.colorAccentGreen);
+        int color = guess ? green
                           : getResources().getColor(R.color.colorAccentRed);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ColorStateList stateList = ColorStateList.valueOf(color);
             answer.setBackgroundTintList(stateList);
+
+            if(!guess) {
+                final ColorStateList greenStateList = ColorStateList.valueOf(green);
+                correctAnswer.setBackgroundTintList(greenStateList);
+            }
         } else {
             answer.getBackground().getCurrent().setColorFilter(
                     new PorterDuffColorFilter(color, PorterDuff.Mode.MULTIPLY));
+
+            if(!guess)
+                correctAnswer.getBackground().getCurrent().setColorFilter(
+                        new PorterDuffColorFilter(green, PorterDuff.Mode.MULTIPLY));
         }
 
         SoundUtil.playSound(this, guess ?
