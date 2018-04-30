@@ -33,7 +33,7 @@ public class TriviaQuestionMultiple extends TriviaQuestion {
         TriviaCategory category = TriviaCategory.get(json.get("category").getAsString());
         TriviaDifficulty difficulty = TriviaDifficulty.get(json.get("difficulty").getAsString());
         String question = Html.fromHtml(json.get("question").getAsString()).toString();
-        String correctAnswer = json.get("correct_answer").getAsString();
+        String correctAnswer = Html.fromHtml(json.get("correct_answer").getAsString()).toString();
 
         JsonArray incorrectAnswersJson = json.get("incorrect_answers").getAsJsonArray();
         String[] incorrectAnswers = new String[]{
