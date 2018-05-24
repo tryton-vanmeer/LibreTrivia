@@ -37,6 +37,8 @@ public class TriviaQuestionFragment extends Fragment {
     })
     Button[] buttonAnswers;
 
+    Button buttonAnswerCorrect;
+
     Button buttonAnswerTrue;
     Button buttonAnswerFalse;
 
@@ -78,15 +80,13 @@ public class TriviaQuestionFragment extends Fragment {
                     (TriviaQuestionMultiple) question).getAnswerList());
             Collections.shuffle(answers);
 
-            buttonAnswers[0].setText(answers.get(0));
-            buttonAnswers[1].setText(answers.get(1));
-            buttonAnswers[2].setText(answers.get(2));
-            buttonAnswers[3].setText(answers.get(3));
-
-            buttonAnswers[0].setOnClickListener(listener);
-            buttonAnswers[1].setOnClickListener(listener);
-            buttonAnswers[2].setOnClickListener(listener);
-            buttonAnswers[3].setOnClickListener(listener);
+            for(int i = 0; i < buttonAnswers.length; i++) {
+                buttonAnswers[i].setText(answers.get(i));
+                buttonAnswers[i].setOnClickListener(listener);
+                if(question.checkAnswer(answers.get(i))) {
+                    buttonAnswerCorrect = buttonAnswers[i];
+                }
+            }
         } else  {
             buttonAnswerTrue.setOnClickListener(listener);
             buttonAnswerFalse.setOnClickListener(listener);
@@ -110,7 +110,7 @@ public class TriviaQuestionFragment extends Fragment {
         @Override
         public void onClick(View v) {
             disableButtons();
-            ((TriviaGameActivity) getActivity()).onAnswerClick((Button) v);
+            ((TriviaGameActivity) getActivity()).onAnswerClick((Button) v, buttonAnswerCorrect);
         }
     }
 }
