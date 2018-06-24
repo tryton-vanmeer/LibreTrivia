@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_description">Ein Open-Source-Trivia-Spiel</string>
+
+    <!-- Category Names -->
+    <string name="category_general_knowledge">Allgemeinwissen</string>
+    <string name="category_entertainment_books">Unterhaltung: Bücher</string>
+    <string name="category_entertainment_film">Unterhaltung: Filme</string>
+    <string name="category_entertainment_music">Unterhaltung: Musik</string>
+    <string name="category_entertainment_musicals_theatres">Unterhaltung: Musicals und Theater</string>
+    <string name="category_entertainment_television">Unterhaltung: Fernsehen</string>
+    <string name="category_entertainment_video_games">Unterhaltung: Video Spiele</string>
+    <string name="category_entertainment_board_games">Unterhaltung: Brettspiele</string>
+    <string name="category_entertainment_japanese_anime_manga">Unterhaltung: Japanische Animes &amp; Mangas</string>
+    <string name="category_entertainment_cartoon_animations">Unterhaltung: Cartoons &amp; Animation</string>
+    <string name="category_entertainment_comics">Unterhaltung: Comics</string>
+    <string name="category_science_nature">Wissenschaft und Natur</string>
+    <string name="category_science_computers">Wissenschaft: Computer</string>
+    <string name="category_science_mathematics">Wissenschaft: Mathematik</string>
+    <string name="category_science_gadgets">Wissenschaft: Gadgets</string>
+    <string name="category_mythology">Mythologie</string>
+    <string name="category_sports">Sport</string>
+    <string name="category_geography">Geographie</string>
+    <string name="category_history">Geschichte</string>
+    <string name="category_politics">Politik</string>
+    <string name="category_art">Kunst</string>
+    <string name="category_celebrities">Prominente</string>
+    <string name="category_animals">Tiere</string>
+    <string name="category_vehicles">Fahrzeuge</string>
+
+    <!-- Difficulty Names -->
+    <string name="difficulty_easy">Einfach</string>
+    <string name="difficulty_medium">Mittel</string>
+    <string name="difficulty_hard">Schwer</string>
+
+    <!-- Question Type Names -->
+    <string name="question_type_multiple">Multiple-Choice</string>
+    <string name="question_type_boolean">Richtig / Falsch</string>
+
+    <!-- UI -->
+    <string name="ui_settings">Einstellungen</string>
+    <string name="ui_about">Über</string>
+    <string name="ui_play">Spielen</string>
+    <string name="ui_start_game">Spiel starten</string>
+    <string name="ui_any">Alle</string>
+    <string name="ui_true">Richtig</string>
+    <string name="ui_false">Falsch</string>
+    <string name="ui_correct">Richtig</string>
+    <string name="ui_wrong">Falsch</string>
+    <string name="ui_amount">Fragen</string>
+    <string name="ui_category">Kategorie</string>
+    <string name="ui_difficulty">Schwierigkeit</string>
+    <string name="ui_question_progress">%1$d⁄%2$d</string>
+    <string name="ui_quit_game">Spiel verlassen</string>
+    <string name="ui_quit_game_msg">Bist du dir sicher, dass du dieses Spiel verlassen möchtest?</string>
+    <string name="ui_results_correct">Richtige Antworten</string>
+    <string name="ui_results_wrong">Flasche Antworten</string>
+    <string name="ui_results_total">Insgesamte Fragen</string>
+    <string name="ui_return_to_menu">Zurück ins Menü</string>
+
+    <!-- Error Strings -->
+    <string name="error_network"><b >Netzwerk Fehler!</b>\n
+         Verbinden mit einem Netzwerk nicht möglich</string>
+    <string name="error_no_trivia_results"><b >Keine Trivia Ergebnisse!</b>\n
+  Es wurden keine Trivia Fragen gefunden, die alle Bedingungen erfüllt haben.</string>
+    <string name="title_activity_settings">Einstellungen</string>
+
+    <!-- Setting Strings-->
+    <string name="pref_category_sound_title">Ton</string>
+</resources>
