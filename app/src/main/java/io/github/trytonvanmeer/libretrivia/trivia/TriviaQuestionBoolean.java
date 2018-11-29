@@ -9,7 +9,7 @@ public class TriviaQuestionBoolean extends TriviaQuestion {
     private final Boolean correctAnswer;
 
     public TriviaQuestionBoolean(TriviaCategory category, TriviaDifficulty difficulty,
-                          String question, boolean correctAnswer) {
+                                 String question, boolean correctAnswer) {
         super(category, difficulty, question);
         this.correctAnswer = correctAnswer;
     }

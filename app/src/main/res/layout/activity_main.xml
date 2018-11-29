@@ -1,63 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="io.github.trytonvanmeer.libretrivia.activities.MainActivity">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
-        
-        <!-- Select Amount -->
-        <TextView
-            android:labelFor="@id/spinner_number"
-            android:text="@string/ui_amount"
-            style="@style/TextLabel" />
-        <Spinner
-            android:id="@+id/spinner_number"
-            style="@style/Spinner" />
 
-        <!-- Select Category Spinner -->
-        <TextView
-            android:labelFor="@id/spinner_category"
-            android:text="@string/ui_category"
-            style="@style/TextLabel" />
-        <Spinner
-            android:id="@+id/spinner_category"
-            style="@style/Spinner" />
-
-        <!-- Select Difficulty Spinner -->
-        <TextView
-            android:labelFor="@id/spinner_difficulty"
-            android:text="@string/ui_difficulty"
-            style="@style/TextLabel" />
-        <Spinner
-            android:id="@+id/spinner_difficulty"
-            style="@style/Spinner" />
-
-        <!-- Play Button -->
-        <Button
-            android:id="@+id/button_play"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"
-            android:text="@string/ui_start_game"
-            style="@style/Button"/>
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
+            <!-- Select Amount -->
+            <TextView
+                style="@style/TextLabel"
+                android:labelFor="@id/spinner_number"
+                android:text="@string/ui_amount" />
+
+            <Spinner
+                android:id="@+id/spinner_number"
+                style="@style/Spinner" />
+
+            <!-- Select Category Spinner -->
+            <TextView
+                style="@style/TextLabel"
+                android:labelFor="@id/spinner_category"
+                android:text="@string/ui_category" />
+
+            <Spinner
+                android:id="@+id/spinner_category"
+                style="@style/Spinner" />
+
+            <!-- Select Difficulty Spinner -->
+            <TextView
+                style="@style/TextLabel"
+                android:labelFor="@id/spinner_difficulty"
+                android:text="@string/ui_difficulty" />
+
+            <Spinner
+                android:id="@+id/spinner_difficulty"
+                style="@style/Spinner" />
+
+            <!-- Play Button -->
+            <Button
+                android:id="@+id/button_play"
+                style="@style/Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/ui_start_game"
+                android:textSize="24sp" />
+
+        </LinearLayout>
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

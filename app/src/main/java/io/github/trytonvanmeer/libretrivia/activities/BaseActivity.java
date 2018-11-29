@@ -2,7 +2,6 @@ package io.github.trytonvanmeer.libretrivia.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -10,6 +9,7 @@ import android.view.MenuItem;
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 
+import androidx.appcompat.app.AppCompatActivity;
 import io.github.trytonvanmeer.libretrivia.R;
 import io.github.trytonvanmeer.libretrivia.settings.SettingsActivity;
 
@@ -25,14 +25,14 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.settings:
                 onSettings();
                 return true;
             case R.id.about:
                 onAbout();
                 return true;
-            case  android.R.id.home:
+            case android.R.id.home:
                 onBackPressed();
             default:
                 return super.onOptionsItemSelected(item);

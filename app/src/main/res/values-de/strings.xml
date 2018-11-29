@@ -58,10 +58,10 @@
     <string name="ui_return_to_menu">Zurück ins Menü</string>
 
     <!-- Error Strings -->
-    <string name="error_network"><b >Netzwerk Fehler!</b>\n
+    <string name="error_network"><b>Netzwerk Fehler!</b>\n
          Verbinden mit einem Netzwerk nicht möglich</string>
-    <string name="error_no_trivia_results"><b >Keine Trivia Ergebnisse!</b>\n
-  Es wurden keine Trivia Fragen gefunden, die alle Bedingungen erfüllt haben.</string>
+    <string name="error_no_trivia_results"><b>Keine Trivia Ergebnisse!</b>\n
+        Es wurden keine Trivia Fragen gefunden, die alle Bedingungen erfüllt haben.</string>
     <string name="title_activity_settings">Einstellungen</string>
 
     <!-- Setting Strings-->

@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/text_trivia_question"
@@ -23,24 +22,24 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:textAlignment="center"
-            android:textStyle="bold"
             android:textSize="16sp"
-            tools:text="Is such and such true or false?" />
+            android:textStyle="bold"
+            tools:text="Is such-and-such true or false?" />
 
         <Button
             android:id="@+id/button_answer_true"
+            style="@style/AnswerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ui_true"
-            style="@style/AnswerButton" />
+            android:text="@string/ui_true" />
 
         <Button
             android:id="@+id/button_answer_false"
+            style="@style/AnswerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ui_false"
-            style="@style/AnswerButton" />
+            android:text="@string/ui_false" />
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

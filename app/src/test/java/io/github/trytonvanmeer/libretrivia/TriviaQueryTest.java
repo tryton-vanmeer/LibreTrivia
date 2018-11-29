@@ -1,12 +1,13 @@
 package io.github.trytonvanmeer.libretrivia;
 
-import org.junit.Test;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaCategory;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaDifficulty;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaType;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TriviaQueryTest {
 
@@ -14,7 +15,7 @@ public class TriviaQueryTest {
     public void triviaQuery_MatchQuery() {
         TriviaQuery query = new TriviaQuery.Builder().build();
 
-        assertTrue(query.toString().equals("https://opentdb.com/api.php?amount=10"));
+        assertEquals("https://opentdb.com/api.php?amount=10", query.toString());
     }
 
     @Test
@@ -25,13 +26,15 @@ public class TriviaQueryTest {
                 .type(TriviaType.MULTIPLE)
                 .build();
 
-        assertTrue(query.toString().equals("https://opentdb.com/api.php?amount=20&category=9&difficulty=easy&type=multiple"));
+        assertEquals(
+                "https://opentdb.com/api.php?amount=20&category=9&difficulty=easy&type=multiple",
+                query.toString());
     }
 
     @Test
     public void triviaQuery_AmountExceedFifty() {
         TriviaQuery query = new TriviaQuery.Builder(500).build();
 
-        assertTrue(query.toString().equals("https://opentdb.com/api.php?amount=50"));
+        assertEquals("https://opentdb.com/api.php?amount=50", query.toString());
     }
 }

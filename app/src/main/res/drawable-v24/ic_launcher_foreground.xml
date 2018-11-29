@@ -7,8 +7,8 @@
     <path
         android:fillType="evenOdd"
         android:pathData="m49.05,22.5 l-6.37,5.01 -6.36,5.01 6.36,5.01 6.37,-5.01 3.73,2.94v8.3l-10.09,7.94v14.17h9L51.69,54.64l10.09,-7.95L61.78,32.52L55.41,27.51ZM42.69,69.41v7.09h9v-7.09z"
-        android:strokeColor="#00000000"
-        android:strokeWidth="1">
+        android:strokeWidth="1"
+        android:strokeColor="#00000000">
         <aapt:attr name="android:fillColor">
             <gradient
                 android:endX=".5885"
@@ -26,7 +26,7 @@
         </aapt:attr>
     </path>
     <path
-        android:pathData="m48.6,21.6 l-6.37,5.01 -6.36,5.01 6.36,5.01 6.37,-5.01 3.73,2.94v8.3l-10.09,7.94v14.17h9V53.74l10.09,-7.95V31.62L54.96,26.61ZM42.24,68.51V75.6h9v-7.09z"
         android:fillColor="#ffffff"
+        android:pathData="m48.6,21.6 l-6.37,5.01 -6.36,5.01 6.36,5.01 6.37,-5.01 3.73,2.94v8.3l-10.09,7.94v14.17h9V53.74l10.09,-7.95V31.62L54.96,26.61ZM42.24,68.51V75.6h9v-7.09z"
         android:strokeWidth="1" />
 </vector>

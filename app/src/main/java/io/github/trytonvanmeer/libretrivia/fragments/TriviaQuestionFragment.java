@@ -1,9 +1,6 @@
 package io.github.trytonvanmeer.libretrivia.fragments;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +11,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import io.github.trytonvanmeer.libretrivia.R;
@@ -42,7 +42,8 @@ public class TriviaQuestionFragment extends Fragment {
     Button buttonAnswerTrue;
     Button buttonAnswerFalse;
 
-    public TriviaQuestionFragment() {}
+    public TriviaQuestionFragment() {
+    }
 
     public static TriviaQuestionFragment newInstance() {
         return new TriviaQuestionFragment();
@@ -80,14 +81,14 @@ public class TriviaQuestionFragment extends Fragment {
                     (TriviaQuestionMultiple) question).getAnswerList());
             Collections.shuffle(answers);
 
-            for(int i = 0; i < buttonAnswers.length; i++) {
+            for (int i = 0; i < buttonAnswers.length; i++) {
                 buttonAnswers[i].setText(answers.get(i));
                 buttonAnswers[i].setOnClickListener(listener);
-                if(question.checkAnswer(answers.get(i))) {
+                if (question.checkAnswer(answers.get(i))) {
                     buttonAnswerCorrect = buttonAnswers[i];
                 }
             }
-        } else  {
+        } else {
             buttonAnswerTrue.setOnClickListener(listener);
             buttonAnswerFalse.setOnClickListener(listener);
         }

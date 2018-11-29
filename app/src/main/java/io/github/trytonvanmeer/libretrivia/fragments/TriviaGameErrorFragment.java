@@ -1,13 +1,13 @@
 package io.github.trytonvanmeer.libretrivia.fragments;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.trytonvanmeer.libretrivia.R;
@@ -15,9 +15,11 @@ import io.github.trytonvanmeer.libretrivia.R;
 public class TriviaGameErrorFragment extends Fragment {
     private final static String ARG_ERROR_MSG = "arg_error_msg";
 
-    @BindView(R.id.text_error_msg) TextView textView;
+    @BindView(R.id.text_error_msg)
+    TextView textView;
 
-    public TriviaGameErrorFragment() {}
+    public TriviaGameErrorFragment() {
+    }
 
     public static TriviaGameErrorFragment newInstance(String msg) {
         Bundle args = new Bundle();
