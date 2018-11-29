@@ -25,14 +25,14 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.settings:
                 onSettings();
                 return true;
             case R.id.about:
                 onAbout();
                 return true;
-            case  android.R.id.home:
+            case android.R.id.home:
                 onBackPressed();
             default:
                 return super.onOptionsItemSelected(item);

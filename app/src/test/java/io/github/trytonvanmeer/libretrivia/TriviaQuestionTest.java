@@ -5,13 +5,13 @@ import com.google.gson.JsonParser;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaCategory;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaDifficulty;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionBoolean;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionMultiple;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class TriviaQuestionTest {
 

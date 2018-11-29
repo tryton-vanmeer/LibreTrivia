@@ -15,9 +15,11 @@ import io.github.trytonvanmeer.libretrivia.R;
 public class TriviaGameErrorFragment extends Fragment {
     private final static String ARG_ERROR_MSG = "arg_error_msg";
 
-    @BindView(R.id.text_error_msg) TextView textView;
+    @BindView(R.id.text_error_msg)
+    TextView textView;
 
-    public TriviaGameErrorFragment() {}
+    public TriviaGameErrorFragment() {
+    }
 
     public static TriviaGameErrorFragment newInstance(String msg) {
         Bundle args = new Bundle();

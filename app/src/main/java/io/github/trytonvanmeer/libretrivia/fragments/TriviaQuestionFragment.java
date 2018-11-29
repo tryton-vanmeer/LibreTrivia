@@ -42,7 +42,8 @@ public class TriviaQuestionFragment extends Fragment {
     Button buttonAnswerTrue;
     Button buttonAnswerFalse;
 
-    public TriviaQuestionFragment() {}
+    public TriviaQuestionFragment() {
+    }
 
     public static TriviaQuestionFragment newInstance() {
         return new TriviaQuestionFragment();
@@ -80,14 +81,14 @@ public class TriviaQuestionFragment extends Fragment {
                     (TriviaQuestionMultiple) question).getAnswerList());
             Collections.shuffle(answers);
 
-            for(int i = 0; i < buttonAnswers.length; i++) {
+            for (int i = 0; i < buttonAnswers.length; i++) {
                 buttonAnswers[i].setText(answers.get(i));
                 buttonAnswers[i].setOnClickListener(listener);
-                if(question.checkAnswer(answers.get(i))) {
+                if (question.checkAnswer(answers.get(i))) {
                     buttonAnswerCorrect = buttonAnswers[i];
                 }
             }
-        } else  {
+        } else {
             buttonAnswerTrue.setOnClickListener(listener);
             buttonAnswerFalse.setOnClickListener(listener);
         }

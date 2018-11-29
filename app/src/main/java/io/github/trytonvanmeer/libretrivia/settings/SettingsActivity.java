@@ -17,14 +17,15 @@ public class SettingsActivity extends AppCompatActivity {
             actionBar.setTitle(null);
         }
 
-        getFragmentManager().beginTransaction()
+        getFragmentManager()
+                .beginTransaction()
                 .replace(android.R.id.content, new SettingsFragment())
                 .commit();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 return true;

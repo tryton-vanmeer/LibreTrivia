@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="io.github.trytonvanmeer.libretrivia.activities.TriviaGameResultsActivity">
 
     <ImageView
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:layout_marginBottom="16dp"
         android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
         android:scaleType="fitXY"
-        android:tint="@color/colorTextSecondary"
-        android:src="@drawable/ic_clipboard_text" />
+        android:src="@drawable/ic_clipboard_text"
+        android:tint="@color/colorTextSecondary" />
 
     <!-- Total Answers -->
     <LinearLayout
@@ -23,9 +22,9 @@
         android:layout_marginBottom="16dp">
 
         <TextView
-            android:textColor="@color/colorAccent"
+            style="@style/ResultText"
             android:text="@string/ui_results_total"
-            style="@style/ResultText" />
+            android:textColor="@color/colorAccent" />
 
         <TextView
             android:id="@+id/text_results_total"
@@ -41,9 +40,9 @@
         android:layout_marginBottom="16dp">
 
         <TextView
-            android:textColor="@color/colorAccentGreen"
+            style="@style/ResultText"
             android:text="@string/ui_results_correct"
-            style="@style/ResultText" />
+            android:textColor="@color/colorAccentGreen" />
 
         <TextView
             android:id="@+id/text_results_correct"
@@ -59,9 +58,9 @@
         android:layout_marginBottom="16dp">
 
         <TextView
-            android:textColor="@color/colorAccentRed"
+            style="@style/ResultText"
             android:text="@string/ui_results_wrong"
-            style="@style/ResultText"/>
+            android:textColor="@color/colorAccentRed" />
 
         <TextView
             android:id="@+id/text_results_wrong"
@@ -74,15 +73,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center" >
+        android:gravity="center">
 
         <Button
             android:id="@+id/button_return_to_menu"
+            style="@style/Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/ui_return_to_menu"
-            style="@style/Button" />
+            android:text="@string/ui_return_to_menu" />
 
     </LinearLayout>
 
