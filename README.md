@@ -1,7 +1,12 @@
 <p align="center"><a href="https://github.com/tryton-vanmeer/LibreTrivia"><img src="app/src/main/ic_launcher-web.png" width="150"/></a></p>
 <h2 align="center"><b>LibreTrivia</b></h2>
-<h4 align="center">An Open Source Trivia Game for Android</h4>
-<p align="center"><a href="https://f-droid.org/packages/io.github.trytonvanmeer.libretrivia/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"/></a></p>
+<h4 align="center">An open-source trivia game for Android.</h4>
+<p align="center">
+	<a href="https://f-droid.org/packages/io.github.trytonvanmeer.libretrivia/">
+		<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+		alt="Get it on F-Droid" height="100">
+	</a>
+</p>
 
 <p align="center">
 <a href="https://github.com/tryton-vanmeer/LibreTrivia" alt="GitHub Release"><img src="https://img.shields.io/github/release/tryton-vanmeer/LibreTrivia.svg" /></a>
