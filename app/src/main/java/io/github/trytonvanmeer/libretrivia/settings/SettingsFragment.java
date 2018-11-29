@@ -2,10 +2,9 @@ package io.github.trytonvanmeer.libretrivia.settings;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
-import android.support.annotation.Nullable;
 
+import androidx.annotation.Nullable;
 import io.github.trytonvanmeer.libretrivia.R;
-
 
 public class SettingsFragment extends PreferenceFragment {
     @Override
