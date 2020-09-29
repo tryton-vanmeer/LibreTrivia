@@ -18,7 +18,7 @@
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_emoticon_sad"
+            app:srcCompat="@drawable/ic_emoticon_sad"
             app:tint="@color/colorTextSecondary" />
 
         <TextView

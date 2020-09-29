@@ -11,6 +11,7 @@ android {
         versionCode 3
         versionName "0.3"
 
+        vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
