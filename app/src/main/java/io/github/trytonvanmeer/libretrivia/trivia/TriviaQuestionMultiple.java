@@ -1,6 +1,6 @@
 package io.github.trytonvanmeer.libretrivia.trivia;
 
-import android.text.Html;
+import androidx.core.text.HtmlCompat;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -10,7 +10,7 @@ public class TriviaQuestionMultiple extends TriviaQuestion {
     private final String[] incorrectAnswers;
 
     public TriviaQuestionMultiple(TriviaCategory category, TriviaDifficulty difficulty,
-                                  String question, String correctAnswer, String[] incorrectAnswers) {
+                                  String question, String correctAnswer, String... incorrectAnswers) {
         super(category, difficulty, question);
 
         this.correctAnswer = correctAnswer;
@@ -20,14 +20,18 @@ public class TriviaQuestionMultiple extends TriviaQuestion {
     public static TriviaQuestionMultiple fromJson(JsonObject json) {
         TriviaCategory category = TriviaCategory.get(json.get("category").getAsString());
         TriviaDifficulty difficulty = TriviaDifficulty.get(json.get("difficulty").getAsString());
-        String question = Html.fromHtml(json.get("question").getAsString()).toString();
-        String correctAnswer = Html.fromHtml(json.get("correct_answer").getAsString()).toString();
+
+        String question = HtmlCompat.fromHtml(
+                json.get("question").getAsString(), HtmlCompat.FROM_HTML_MODE_LEGACY).toString();
+
+        String correctAnswer = HtmlCompat.fromHtml(
+                json.get("correct_answer").getAsString(), HtmlCompat.FROM_HTML_MODE_LEGACY).toString();
 
         JsonArray incorrectAnswersJson = json.get("incorrect_answers").getAsJsonArray();
-        String[] incorrectAnswers = new String[]{
-                Html.fromHtml(incorrectAnswersJson.get(0).getAsString()).toString(),
-                Html.fromHtml(incorrectAnswersJson.get(1).getAsString()).toString(),
-                Html.fromHtml(incorrectAnswersJson.get(2).getAsString()).toString()
+        String[] incorrectAnswers = {
+                HtmlCompat.fromHtml(incorrectAnswersJson.get(0).getAsString(), HtmlCompat.FROM_HTML_MODE_LEGACY).toString(),
+                HtmlCompat.fromHtml(incorrectAnswersJson.get(1).getAsString(), HtmlCompat.FROM_HTML_MODE_LEGACY).toString(),
+                HtmlCompat.fromHtml(incorrectAnswersJson.get(2).getAsString(), HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
         };
 
         return new TriviaQuestionMultiple(

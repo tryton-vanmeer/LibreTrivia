@@ -22,8 +22,7 @@ public class TriviaQuestionTest {
                 TriviaDifficulty.EASY,
                 "What is my name?",
                 "Bob",
-                new String[]{"Joe", "Tom", "James"}
-        );
+                "Joe", "Tom", "James");
 
         assertTrue(question.checkAnswer("Bob"));
     }
@@ -35,8 +34,7 @@ public class TriviaQuestionTest {
                 TriviaDifficulty.EASY,
                 "What is my name?",
                 "Bob",
-                new String[]{"Joe", "Tom", "James"}
-        );
+                "Joe", "Tom", "James");
 
         assertFalse(question.checkAnswer("Tom"));
     }

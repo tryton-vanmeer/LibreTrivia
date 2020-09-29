@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
         android:key="@string/pref_category_sound"
-        android:title="@string/pref_category_sound_title">
+        android:title="@string/pref_category_sound_title"
+        app:iconSpaceReserved="false">
 
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="@string/pref_sound_answer"
-            android:title="@string/pref_sound_answer_title" />
+            android:title="@string/pref_sound_answer_title"
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
 
 </PreferenceScreen>
+

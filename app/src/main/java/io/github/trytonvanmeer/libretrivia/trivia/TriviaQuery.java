@@ -1,5 +1,7 @@
 package io.github.trytonvanmeer.libretrivia.trivia;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class TriviaQuery implements Serializable {
@@ -18,6 +20,7 @@ public class TriviaQuery implements Serializable {
         this.type = builder.type;
     }
 
+    @NonNull
     @Override
     public String toString() {
         StringBuilder url = new StringBuilder();
@@ -49,11 +52,7 @@ public class TriviaQuery implements Serializable {
         }
 
         public Builder(int amount) {
-            if (amount > 50) {
-                this.amount = 50;
-            } else {
-                this.amount = amount;
-            }
+            this.amount = Math.min(amount, 50);
         }
 
         public Builder category(TriviaCategory category) {
