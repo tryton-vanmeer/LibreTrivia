@@ -15,10 +15,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.io.IOException;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.trytonvanmeer.libretrivia.R;
@@ -36,9 +37,6 @@ public class TriviaGameActivity extends BaseActivity
         implements IDownloadTriviaQuestionReceiver {
     static final String EXTRA_TRIVIA_QUERY = "extra_trivia_query";
     private final String STATE_TRIVIA_GAME = "state_trivia_game";
-
-    private TriviaGame game;
-
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
     @BindView(R.id.trivia_status_bar)
@@ -49,6 +47,7 @@ public class TriviaGameActivity extends BaseActivity
     TextView textViewQuestionDifficulty;
     @BindView(R.id.text_question_progress)
     TextView textViewQuestionProgress;
+    private TriviaGame game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

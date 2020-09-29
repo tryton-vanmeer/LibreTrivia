@@ -17,18 +17,6 @@ public class TriviaQuestionMultiple extends TriviaQuestion {
         this.incorrectAnswers = incorrectAnswers;
     }
 
-    public String[] getAnswerList() {
-        return new String[]{correctAnswer,
-                incorrectAnswers[0],
-                incorrectAnswers[1],
-                incorrectAnswers[2]};
-    }
-
-    @Override
-    public boolean checkAnswer(String guess) {
-        return this.correctAnswer.equals(guess);
-    }
-
     public static TriviaQuestionMultiple fromJson(JsonObject json) {
         TriviaCategory category = TriviaCategory.get(json.get("category").getAsString());
         TriviaDifficulty difficulty = TriviaDifficulty.get(json.get("difficulty").getAsString());
@@ -44,5 +32,17 @@ public class TriviaQuestionMultiple extends TriviaQuestion {
 
         return new TriviaQuestionMultiple(
                 category, difficulty, question, correctAnswer, incorrectAnswers);
+    }
+
+    public String[] getAnswerList() {
+        return new String[]{correctAnswer,
+                incorrectAnswers[0],
+                incorrectAnswers[1],
+                incorrectAnswers[2]};
+    }
+
+    @Override
+    public boolean checkAnswer(String guess) {
+        return this.correctAnswer.equals(guess);
     }
 }

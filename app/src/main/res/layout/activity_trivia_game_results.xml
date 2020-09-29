@@ -1,94 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context="io.github.trytonvanmeer.libretrivia.activities.TriviaGameResultsActivity">
 
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_clipboard_text"
-        android:tint="@color/colorTextSecondary" />
-
-    <!-- Total Answers -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
+        android:orientation="vertical"
+        tools:context="io.github.trytonvanmeer.libretrivia.activities.TriviaGameResultsActivity">
 
-        <TextView
-            style="@style/ResultText"
-            android:text="@string/ui_results_total"
-            android:textColor="@color/colorAccent" />
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_clipboard_text"
+            android:tint="@color/colorTextSecondary" />
 
-        <TextView
-            android:id="@+id/text_results_total"
-            style="@style/ResultText"
-            tools:text="10" />
-
-    </LinearLayout>
-
-    <!-- Correct Answers -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
-
-        <TextView
-            style="@style/ResultText"
-            android:text="@string/ui_results_correct"
-            android:textColor="@color/colorAccentGreen" />
-
-        <TextView
-            android:id="@+id/text_results_correct"
-            style="@style/ResultText"
-            tools:text="6" />
-
-    </LinearLayout>
-
-    <!-- Wrong Answers-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
-
-        <TextView
-            style="@style/ResultText"
-            android:text="@string/ui_results_wrong"
-            android:textColor="@color/colorAccentRed" />
-
-        <TextView
-            android:id="@+id/text_results_wrong"
-            style="@style/ResultText"
-            tools:text="4" />
-
-    </LinearLayout>
-
-    <!-- Buttons -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/button_return_to_menu"
-            style="@style/Button"
-            android:layout_width="wrap_content"
+        <!-- Total Answers -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/ui_return_to_menu" />
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                style="@style/ResultText"
+                android:text="@string/ui_results_total"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/text_results_total"
+                style="@style/ResultText"
+                tools:text="10" />
+
+        </LinearLayout>
+
+        <!-- Correct Answers -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                style="@style/ResultText"
+                android:text="@string/ui_results_correct"
+                android:textColor="@color/colorAccentGreen" />
+
+            <TextView
+                android:id="@+id/text_results_correct"
+                style="@style/ResultText"
+                tools:text="6" />
+
+        </LinearLayout>
+
+        <!-- Wrong Answers-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                style="@style/ResultText"
+                android:text="@string/ui_results_wrong"
+                android:textColor="@color/colorAccentRed" />
+
+            <TextView
+                android:id="@+id/text_results_wrong"
+                style="@style/ResultText"
+                tools:text="4" />
+
+        </LinearLayout>
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_return_to_menu"
+                style="@style/Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/ui_return_to_menu" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
 </ScrollView>

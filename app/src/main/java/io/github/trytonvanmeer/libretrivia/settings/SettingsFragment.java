@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
 import androidx.annotation.Nullable;
+
 import io.github.trytonvanmeer.libretrivia.R;
 
 public class SettingsFragment extends PreferenceFragment {

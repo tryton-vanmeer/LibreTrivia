@@ -14,15 +14,6 @@ public class TriviaQuestionBoolean extends TriviaQuestion {
         this.correctAnswer = correctAnswer;
     }
 
-    @Override
-    public boolean checkAnswer(String guess) {
-        return this.correctAnswer.equals(Boolean.valueOf(guess));
-    }
-
-    public boolean checkAnswer(Boolean guess) {
-        return checkAnswer(guess.toString());
-    }
-
     public static TriviaQuestionBoolean fromJson(JsonObject json) {
         TriviaCategory category = TriviaCategory.get(json.get("category").getAsString());
         TriviaDifficulty difficulty = TriviaDifficulty.get(json.get("difficulty").getAsString());
@@ -30,5 +21,14 @@ public class TriviaQuestionBoolean extends TriviaQuestion {
         Boolean correctAnswer = json.get("correct_answer").getAsBoolean();
 
         return new TriviaQuestionBoolean(category, difficulty, question, correctAnswer);
+    }
+
+    @Override
+    public boolean checkAnswer(String guess) {
+        return this.correctAnswer.equals(Boolean.valueOf(guess));
+    }
+
+    public boolean checkAnswer(Boolean guess) {
+        return checkAnswer(guess.toString());
     }
 }

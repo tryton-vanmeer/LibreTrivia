@@ -12,11 +12,6 @@ public enum TriviaType {
     MULTIPLE("multiple", R.string.question_type_multiple),
     BOOLEAN("boolean", R.string.question_type_boolean);
 
-    // Name of type used in queries
-    private final String name;
-    // Display name of the type
-    private final int displayName;
-
     private static final Map<String, TriviaType> lookup = new HashMap<>();
 
     static {
@@ -25,17 +20,22 @@ public enum TriviaType {
         }
     }
 
+    // Name of type used in queries
+    private final String name;
+    // Display name of the type
+    private final int displayName;
+
     TriviaType(String name, int displayName) {
         this.name = name;
         this.displayName = displayName;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     public static TriviaType get(String name) {
         return lookup.get(name);
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     @Override

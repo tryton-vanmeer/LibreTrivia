@@ -6,10 +6,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 
-import androidx.appcompat.app.AppCompatActivity;
 import io.github.trytonvanmeer.libretrivia.R;
 import io.github.trytonvanmeer.libretrivia.settings.SettingsActivity;
 
