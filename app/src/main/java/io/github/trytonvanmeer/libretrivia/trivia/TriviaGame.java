@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 
 public class TriviaGame implements Serializable {
-    private int currentQuestion;
     private final boolean[] results;
-    private final List<TriviaQuestion> questions;
+    private final List<? extends TriviaQuestion> questions;
+    private int currentQuestion;
 
-    public TriviaGame(List<TriviaQuestion> questions) {
+    public TriviaGame(List<? extends TriviaQuestion> questions) {
         this.currentQuestion = 0;
         this.questions = questions;
         this.results = new boolean[questions.size()];

@@ -9,13 +9,13 @@ public class LibreTriviaApplication extends Application {
     @SuppressLint("StaticFieldLeak")
     private static Context context;
 
+    public static Context getAppContext() {
+        return LibreTriviaApplication.context;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         LibreTriviaApplication.context = getApplicationContext();
-    }
-
-    public static Context getAppContext() {
-        return LibreTriviaApplication.context;
     }
 }

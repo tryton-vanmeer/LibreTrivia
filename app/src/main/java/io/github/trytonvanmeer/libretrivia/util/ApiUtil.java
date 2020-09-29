@@ -56,7 +56,7 @@ public class ApiUtil {
     }
 
     public static ArrayList<TriviaQuestion> jsonToQuestionArray(String json) throws NoTriviaResultsException {
-        JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
+        JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
 
         if (jsonObject.get("response_code").getAsInt() == 1) {
             throw new NoTriviaResultsException();

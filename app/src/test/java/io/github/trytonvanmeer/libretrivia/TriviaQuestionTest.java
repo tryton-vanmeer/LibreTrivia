@@ -3,15 +3,15 @@ package io.github.trytonvanmeer.libretrivia;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaCategory;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaDifficulty;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionBoolean;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuestionMultiple;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class TriviaQuestionTest {
 
@@ -22,8 +22,7 @@ public class TriviaQuestionTest {
                 TriviaDifficulty.EASY,
                 "What is my name?",
                 "Bob",
-                new String[]{"Joe", "Tom", "James"}
-        );
+                "Joe", "Tom", "James");
 
         assertTrue(question.checkAnswer("Bob"));
     }
@@ -35,15 +34,14 @@ public class TriviaQuestionTest {
                 TriviaDifficulty.EASY,
                 "What is my name?",
                 "Bob",
-                new String[]{"Joe", "Tom", "James"}
-        );
+                "Joe", "Tom", "James");
 
         assertFalse(question.checkAnswer("Tom"));
     }
 
     @Test
     public void triviaQuestionMultiple_FromJson() {
-        JsonObject json = new JsonParser().parse(
+        JsonObject json = JsonParser.parseString(
                 "{\n" +
                         "      \"category\": \"General Knowledge\",\n" +
                         "      \"type\": \"multiple\",\n" +
@@ -88,7 +86,7 @@ public class TriviaQuestionTest {
 
     @Test
     public void triviaQuestionBoolean_FromJson() {
-        JsonObject json = new JsonParser().parse(
+        JsonObject json = JsonParser.parseString(
                 "{\n" +
                         "      \"category\": \"Entertainment: Video Games\",\n" +
                         "      \"type\": \"boolean\",\n" +

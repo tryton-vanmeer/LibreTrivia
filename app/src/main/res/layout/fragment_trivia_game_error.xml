@@ -18,8 +18,8 @@
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_emoticon_sad"
-            android:tint="@color/colorTextSecondary" />
+            app:srcCompat="@drawable/ic_emoticon_sad"
+            app:tint="@color/colorTextSecondary" />
 
         <TextView
             android:id="@+id/text_error_msg"

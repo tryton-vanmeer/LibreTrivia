@@ -1,5 +1,7 @@
 package io.github.trytonvanmeer.libretrivia.trivia;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class TriviaQuery implements Serializable {
@@ -18,6 +20,27 @@ public class TriviaQuery implements Serializable {
         this.type = builder.type;
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        StringBuilder url = new StringBuilder();
+
+        url.append(BASE);
+        url.append("amount=").append(this.amount);
+
+        if (this.category != null & this.category != TriviaCategory.ANY) {
+            url.append("&category=").append(this.category.getID());
+        }
+        if (this.difficulty != null & this.difficulty != TriviaDifficulty.ANY) {
+            url.append("&difficulty=").append(this.difficulty.getName());
+        }
+        if (this.type != null & this.type != TriviaType.ANY) {
+            url.append("&type=").append(this.type.getName());
+        }
+
+        return url.toString();
+    }
+
     public static class Builder {
         private final int amount;
         private TriviaCategory category;
@@ -29,11 +52,7 @@ public class TriviaQuery implements Serializable {
         }
 
         public Builder(int amount) {
-            if (amount > 50) {
-                this.amount = 50;
-            } else {
-                this.amount = amount;
-            }
+            this.amount = Math.min(amount, 50);
         }
 
         public Builder category(TriviaCategory category) {
@@ -54,25 +73,5 @@ public class TriviaQuery implements Serializable {
         public TriviaQuery build() {
             return new TriviaQuery(this);
         }
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder url = new StringBuilder();
-
-        url.append(BASE);
-        url.append("amount=").append(this.amount);
-
-        if (this.category != null & this.category != TriviaCategory.ANY) {
-            url.append("&category=").append(this.category.getID());
-        }
-        if (this.difficulty != null & this.difficulty != TriviaDifficulty.ANY) {
-            url.append("&difficulty=").append(this.difficulty.getName());
-        }
-        if (this.type != null & this.type != TriviaType.ANY) {
-            url.append("&type=").append(this.type.getName());
-        }
-
-        return url.toString();
     }
 }

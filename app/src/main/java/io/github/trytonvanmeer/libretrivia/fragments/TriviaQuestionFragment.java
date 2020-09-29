@@ -7,13 +7,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import io.github.trytonvanmeer.libretrivia.R;
@@ -53,7 +54,7 @@ public class TriviaQuestionFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        TriviaQuestion question = ((TriviaGameActivity) getActivity()).getCurrentQuestion();
+        TriviaQuestion question = ((TriviaGameActivity) requireActivity()).getCurrentQuestion();
         View view;
 
         if (question instanceof TriviaQuestionMultiple) {
@@ -74,7 +75,7 @@ public class TriviaQuestionFragment extends Fragment {
 
     private void setupButtons() {
         AnswerButtonListener listener = new AnswerButtonListener();
-        TriviaQuestion question = ((TriviaGameActivity) getActivity()).getCurrentQuestion();
+        TriviaQuestion question = ((TriviaGameActivity) requireActivity()).getCurrentQuestion();
 
         if (question instanceof TriviaQuestionMultiple) {
             List<String> answers = Arrays.asList((
@@ -95,7 +96,7 @@ public class TriviaQuestionFragment extends Fragment {
     }
 
     private void disableButtons() {
-        TriviaQuestion question = ((TriviaGameActivity) getActivity()).getCurrentQuestion();
+        TriviaQuestion question = ((TriviaGameActivity) requireActivity()).getCurrentQuestion();
         if (question instanceof TriviaQuestionMultiple) {
             buttonAnswers[0].setEnabled(false);
             buttonAnswers[1].setEnabled(false);
@@ -111,7 +112,7 @@ public class TriviaQuestionFragment extends Fragment {
         @Override
         public void onClick(View v) {
             disableButtons();
-            ((TriviaGameActivity) getActivity()).onAnswerClick((Button) v, buttonAnswerCorrect);
+            ((TriviaGameActivity) requireActivity()).onAnswerClick((Button) v, buttonAnswerCorrect);
         }
     }
 }

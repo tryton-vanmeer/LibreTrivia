@@ -13,11 +13,6 @@ public enum TriviaDifficulty {
     MEDIUM("medium", R.string.difficulty_medium),
     HARD("hard", R.string.difficulty_hard);
 
-    // Name of difficulty used in queries
-    private final String name;
-    // Display name of the difficulty
-    private final int displayName;
-
     private static final Map<String, TriviaDifficulty> lookup = new HashMap<>();
 
     static {
@@ -26,17 +21,22 @@ public enum TriviaDifficulty {
         }
     }
 
+    // Name of difficulty used in queries
+    private final String name;
+    // Display name of the difficulty
+    private final int displayName;
+
     TriviaDifficulty(String name, int displayName) {
         this.name = name;
         this.displayName = displayName;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     public static TriviaDifficulty get(String name) {
         return lookup.get(name);
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     @Override

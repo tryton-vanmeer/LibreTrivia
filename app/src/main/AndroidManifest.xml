@@ -19,15 +19,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.TriviaGameActivity"
-            android:screenOrientation="fullUser"
-            android:configChanges="orientation|screenSize"/>
-        <activity android:name=".activities.TriviaGameResultsActivity"
-            android:screenOrientation="fullUser"
-            android:configChanges="orientation|screenSize"/>
-        <activity android:name=".settings.SettingsActivity"
-            android:screenOrientation="fullUser"
-            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".activities.TriviaGameActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="fullUser" />
+        <activity
+            android:name=".activities.TriviaGameResultsActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="fullUser" />
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="fullUser" />
     </application>
 
 </manifest>

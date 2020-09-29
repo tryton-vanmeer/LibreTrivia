@@ -1,13 +1,13 @@
 package io.github.trytonvanmeer.libretrivia;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaCategory;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaDifficulty;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaQuery;
 import io.github.trytonvanmeer.libretrivia.trivia.TriviaType;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class TriviaQueryTest {
 

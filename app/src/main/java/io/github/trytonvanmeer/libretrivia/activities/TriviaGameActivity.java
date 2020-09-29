@@ -1,6 +1,5 @@
 package io.github.trytonvanmeer.libretrivia.activities;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
@@ -15,10 +14,13 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.io.IOException;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.trytonvanmeer.libretrivia.R;
@@ -36,9 +38,6 @@ public class TriviaGameActivity extends BaseActivity
         implements IDownloadTriviaQuestionReceiver {
     static final String EXTRA_TRIVIA_QUERY = "extra_trivia_query";
     private final String STATE_TRIVIA_GAME = "state_trivia_game";
-
-    private TriviaGame game;
-
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
     @BindView(R.id.trivia_status_bar)
@@ -49,6 +48,7 @@ public class TriviaGameActivity extends BaseActivity
     TextView textViewQuestionDifficulty;
     @BindView(R.id.text_question_progress)
     TextView textViewQuestionProgress;
+    private TriviaGame game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class TriviaGameActivity extends BaseActivity
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable(STATE_TRIVIA_GAME, this.game);
     }
@@ -87,9 +87,9 @@ public class TriviaGameActivity extends BaseActivity
             new AlertDialog.Builder(this)
                     .setTitle(R.string.ui_quit_game)
                     .setMessage(R.string.ui_quit_game_msg)
-                    .setPositiveButton(android.R.string.yes, (dialog, which) ->
+                    .setPositiveButton(android.R.string.ok, (dialog, which) ->
                             TriviaGameActivity.super.onBackPressed())
-                    .setNegativeButton(android.R.string.no, (dialog, which) -> {
+                    .setNegativeButton(android.R.string.cancel, (dialog, which) -> {
                     })
                     .show();
         }
@@ -99,13 +99,12 @@ public class TriviaGameActivity extends BaseActivity
         if (json == null) {
             onNetworkError();
             return;
-        } else {
-            try {
-                this.game = new TriviaGame(ApiUtil.jsonToQuestionArray(json));
-            } catch (NoTriviaResultsException e) {
-                onNoTriviaResults();
-                return;
-            }
+        }
+        try {
+            this.game = new TriviaGame(ApiUtil.jsonToQuestionArray(json));
+        } catch (NoTriviaResultsException e) {
+            onNoTriviaResults();
+            return;
         }
 
         // Setup game layout
@@ -172,7 +171,7 @@ public class TriviaGameActivity extends BaseActivity
             ColorStateList stateList = ColorStateList.valueOf(color);
             answer.setBackgroundTintList(stateList);
 
-            if (!guess) {
+            if (!guess && correctAnswer != null) {
                 final ColorStateList greenStateList = ColorStateList.valueOf(green);
                 correctAnswer.setBackgroundTintList(greenStateList);
             }
@@ -198,7 +197,7 @@ public class TriviaGameActivity extends BaseActivity
                 updateStatusBar();
                 updateTriviaQuestion();
             }
-        }, 500);
+        }, 800);
     }
 
     private static class DownloadTriviaQuestionsTask extends AsyncTask<TriviaQuery, Integer, String> {

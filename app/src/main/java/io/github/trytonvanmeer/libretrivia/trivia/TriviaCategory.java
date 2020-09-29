@@ -61,14 +61,6 @@ public enum TriviaCategory {
     VEHICLES(28, "Vehicles",
             R.string.category_vehicles);
 
-    // The id of the category in the opentdb api
-    // see <https://opentdb.com/api_category.php>
-    private final int ID;
-    // The name of the category in the JSON response
-    private final String name;
-    // The display name of the category
-    private final int displayName;
-
     private static final Map<String, TriviaCategory> lookup = new HashMap<>();
 
     static {
@@ -77,10 +69,22 @@ public enum TriviaCategory {
         }
     }
 
+    // The id of the category in the opentdb api
+    // see <https://opentdb.com/api_category.php>
+    private final int ID;
+    // The name of the category in the JSON response
+    private final String name;
+    // The display name of the category
+    private final int displayName;
+
     TriviaCategory(int ID, String name, int displayName) {
         this.ID = ID;
         this.name = name;
         this.displayName = displayName;
+    }
+
+    public static TriviaCategory get(String name) {
+        return lookup.get(name);
     }
 
     public int getID() {
@@ -89,10 +93,6 @@ public enum TriviaCategory {
 
     private String getName() {
         return this.name;
-    }
-
-    public static TriviaCategory get(String name) {
-        return lookup.get(name);
     }
 
     @Override

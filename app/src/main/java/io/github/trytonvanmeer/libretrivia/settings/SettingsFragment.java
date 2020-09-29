@@ -1,15 +1,15 @@
 package io.github.trytonvanmeer.libretrivia.settings;
 
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 
-import androidx.annotation.Nullable;
+import androidx.preference.PreferenceFragmentCompat;
+
 import io.github.trytonvanmeer.libretrivia.R;
 
-public class SettingsFragment extends PreferenceFragment {
+public class SettingsFragment extends PreferenceFragmentCompat {
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.preferences);
     }
 }
