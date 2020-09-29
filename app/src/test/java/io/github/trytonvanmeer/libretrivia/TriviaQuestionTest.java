@@ -43,7 +43,7 @@ public class TriviaQuestionTest {
 
     @Test
     public void triviaQuestionMultiple_FromJson() {
-        JsonObject json = new JsonParser().parse(
+        JsonObject json = JsonParser.parseString(
                 "{\n" +
                         "      \"category\": \"General Knowledge\",\n" +
                         "      \"type\": \"multiple\",\n" +
@@ -88,7 +88,7 @@ public class TriviaQuestionTest {
 
     @Test
     public void triviaQuestionBoolean_FromJson() {
-        JsonObject json = new JsonParser().parse(
+        JsonObject json = JsonParser.parseString(
                 "{\n" +
                         "      \"category\": \"Entertainment: Video Games\",\n" +
                         "      \"type\": \"boolean\",\n" +
