@@ -197,7 +197,7 @@ public class TriviaGameActivity extends BaseActivity
                 updateStatusBar();
                 updateTriviaQuestion();
             }
-        }, 500);
+        }, 800);
     }
 
     private static class DownloadTriviaQuestionsTask extends AsyncTask<TriviaQuery, Integer, String> {
