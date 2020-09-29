@@ -171,7 +171,7 @@ public class TriviaGameActivity extends BaseActivity
             ColorStateList stateList = ColorStateList.valueOf(color);
             answer.setBackgroundTintList(stateList);
 
-            if (!guess) {
+            if (!guess && correctAnswer != null) {
                 final ColorStateList greenStateList = ColorStateList.valueOf(green);
                 correctAnswer.setBackgroundTintList(greenStateList);
             }
